@@ -138,7 +138,6 @@ class AppGenerator extends Generator {
         this.yarnInstall([
             'react',
             'react-dom',
-            'inuitcss',
             'sass-mq'
         ])
     }
