@@ -33,3 +33,21 @@ and sets up all the files and dependencies needed to take off.
 cd my-awesome-project
 npm start
 ```
+
+
+## Styles (SCSS)
+By default the support for SCSS is enabled and we recommend to use it.
+
+Just add a .scss instead of a .css file for your components.
+The SCSS files are watched and compiles to a CSS file right next to it.
+As components still import the CSS all the styles will be part of the application.
+
+### Variables and Tools
+Variables, Settings and tools which can be used by all components are placed in `./src/scss`.
+
+If you add new files add an import to _base-imports.scss which then gets imported by
+a components SCSS file to get access to all settings and tools.
+
+### SASS MQ
+To work with Media Queries we have included [SASS-MQ](Progressive Web App).
+The breakpoints are configured in `./src/scss/settings/_settings.breakpoints.scss`.
