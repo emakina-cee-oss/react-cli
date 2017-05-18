@@ -18,12 +18,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/emakina-cee-oss/javascript"
+    "url": "https://github.com/emakina-cee-oss/generator-emakinacee-react"
   },
   "bugs": {
-    "url": "https://github.com/emakina-cee-oss/javascript/issues"
+    "url": "https://github.com/emakina-cee-oss/generator-emakinacee-react/issues"
   },
-  "homepage": "https://github.com/emakina-cee-oss/javascript",
+  "homepage": "https://github.com/emakina-cee-oss/generator-emakinacee-react",
   "files": [
     "generators"
   ],
