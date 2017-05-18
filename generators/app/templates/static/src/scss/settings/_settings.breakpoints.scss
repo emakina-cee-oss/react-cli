@@ -1,0 +1,10 @@
+//
+// BREAKPOINTS
+// Used in sass-mq.
+//
+$mq-breakpoints: (
+    mobile:  320px,
+    tablet:  640px,
+    desktop: 960px,
+    wide:    1400px
+);

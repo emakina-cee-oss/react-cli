@@ -67,8 +67,8 @@ class AppGenerator extends Generator {
      */
     install() {
         this.log(`4. Installing dependencies ...`);
-        // this._yarn();
-        // this._yarnDev();
+        this._yarn();
+        this._yarnDev();
     }
 
     /**
@@ -76,7 +76,7 @@ class AppGenerator extends Generator {
      * Called last, cleanup, say good bye, etc
      */
     end() {
-        this.log(`5. Awesome! Type cd ${this.options.projectName} and you are ready to code!`);
+        this.log(`5. DONE - Awesome!`);
     }
 
     /**
@@ -137,7 +137,9 @@ class AppGenerator extends Generator {
     _yarn() {
         this.yarnInstall([
             'react',
-            'react-dom'
+            'react-dom',
+            'inuitcss',
+            'sass-mq'
         ])
     }
 
@@ -149,7 +151,9 @@ class AppGenerator extends Generator {
     _yarnDev() {
         this.yarnInstall([
             'react-scripts',
-            'sw-precache'
+            'sw-precache',
+            'node-sass-chokidar',
+            'npm-run-all'
         ], { 'dev': true });
     }
 

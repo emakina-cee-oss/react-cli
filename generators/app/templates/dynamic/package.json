@@ -4,8 +4,12 @@
   "private": true,
   "description": "",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
+    "scss:build": "node-sass-chokidar src/ -o src/",
+    "scss:watch": "node-sass-chokidar src/ -o src/ --watch --recursive",
+    "react:start": "react-scripts start",
+    "watch": "npm-run-all -p scss:watch react:start",
+    "start": "npm-run-all scss:build watch",
+    "build": "npm run scss:build && react-scripts build && sw-precache --config=sw-precache-config.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

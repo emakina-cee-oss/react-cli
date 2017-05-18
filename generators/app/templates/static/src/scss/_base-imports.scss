@@ -1,0 +1,19 @@
+// !!!
+// !!! DO NOT GENERATE CSS OUTPUT
+// !!!
+// !!! This file holds only variables, functions, mixins or placeholders
+// !!! which can be used by the component styles.
+
+//
+// SETTINGS
+//
+@import "settings/settings.breakpoints";
+@import "settings/settings.colors";
+@import "settings/settings.typography";
+
+//
+// TOOLS
+//
+@import "../../node_modules/inuitcss/tools/tools.clearfix";
+@import "../../node_modules/sass-mq/mq";
+@import "tools/tools.units";
