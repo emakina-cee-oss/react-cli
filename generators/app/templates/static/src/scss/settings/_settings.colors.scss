@@ -14,8 +14,8 @@ $color-greyscale: (
     white: #ffffff,
 );
 
-// BRAND COLORS YELLOW
-// Map of yellow brand colors.
+// BRAND COLORS
+// Map of brand colors.
 //
 // @example color: map-get($color-yellow, default);
 $color-brand: (
@@ -29,23 +29,23 @@ $color-brand: (
 );
 
 // STATE COLORS
-// Map of state representing colors like bootstraps success, warning, danger etc.
+// Map of state representing colors.
 //
 // @example color: map-get($color-state, success);
 $color-state: (
-    success: #3f930c,
-    success-light: #9cc682,
-    success-lighter: #e6efe1,
+    success-dark: #3f930c,
+    success: #9cc682,
+    success-light: #e6efe1,
 
-    info: #31708f,
-    info-light: #42c6e1,
-    info-lighter: #d9edf7,
+    info-dark: #31708f,
+    info: #42c6e1,
+    info-light: #d9edf7,
 
-    warning: #a0862e,
-    warning-light: #ffd300,
-    warning-lighter: #faf1c7,
+    warning-dark: #a0862e,
+    warning: #ffd300,
+    warning-light: #faf1c7,
 
-    danger: #d7182a,
-    danger-light: #ff0018,
-    danger-lighter: #fae3e5,
+    danger-dark: #d7182a,
+    danger: #ff0018,
+    danger-light: #fae3e5,
 );
