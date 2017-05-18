@@ -1,0 +1,33 @@
+{
+  "name": "generator-emakinacee-react",
+  "version": "0.0.1",
+  "description": "EMAKINA CEE's React CLI",
+  "keywords": [
+    "yeoman-generator",
+    "emakina",
+    "react",
+    "cli"
+  ],
+  "author": "EMAKINA CEE",
+  "contributors": [
+    {
+      "name": "Daniel Gördes",
+      "email": "d.goerdes@emakina.at"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emakina-cee-oss/javascript"
+  },
+  "bugs": {
+    "url": "https://github.com/emakina-cee-oss/javascript/issues"
+  },
+  "homepage": "https://github.com/emakina-cee-oss/javascript",
+  "files": [
+    "generators"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  }
+}
