@@ -6,7 +6,8 @@ The EMAKINA CEE React generator is built on top of react-scripts used by
 [Create React App](https://github.com/facebookincubator/create-react-app).
 This way you can utilize all the awesome features of create-react-app.
 
-And in addition you have access to some even more awesome features.
+And in addition you have access to some even more awesome features like
+[File Generators](https://github.com/emakina-cee-oss/generator-emakinacee-react#file-generators).
 
 
 ## Getting started
@@ -83,3 +84,16 @@ The breakpoints are configured in `./src/scss/settings/_settings.breakpoints.scs
 
 ## State Management
 ...
+
+
+## File Generators
+To quickly add new files with the necessary boilerplate code there are different sub generators
+to add e.g. a new component.
+
+
+### Component
+```sh
+yo emakinacee-react:component ComponentName --class
+```
+By Default this will add a stateless component to add a class component add the 
+`--class` option flag.
