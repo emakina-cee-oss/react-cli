@@ -1,5 +1,3 @@
-const fs = require('fs');
-const mkdirp = require('mkdirp');
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 
@@ -12,29 +10,6 @@ class AppGenerator extends Generator {
         this.argument('componentName', { type: String, required: true });
     }
 
-    /**
-     * INITIALIZING
-     * Your initialization methods (checking current project state, getting configs, etc)
-     */
-    initializing() {}
-
-    /**
-     * PROMTING
-     * Where you prompt users for options (where you'd call this.prompt())
-     */
-    prompting() {}
-
-    /**
-     * CONFIGURING
-     * Saving configurations and configure the project (creating .editorconfig files and other metadata files)
-     */
-    configuring() {}
-
-    /**
-     * DEFAULT
-     * If the method name doesn't match a priority, it will be pushed to this group.
-     */
-    default() {}
 
     /**
      * WRITING
@@ -50,18 +25,6 @@ class AppGenerator extends Generator {
             this._copyStatelessComponent();
         }
     }
-
-    /**
-     * INSTALL
-     * Where installations are run (npm, bower)
-     */
-    install() {}
-
-    /**
-     * END
-     * Called last, cleanup, say good bye, etc
-     */
-    end() {}
 
     /**
      * COPY SHARED FILES
