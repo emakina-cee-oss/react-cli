@@ -1,4 +1,4 @@
-@import "./scss/base-imports";
+@import "../../scss/base-imports";
 
 .c-app {
     @include mq($from: tablet) {
