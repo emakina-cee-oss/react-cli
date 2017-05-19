@@ -1,0 +1,16 @@
+{
+  "name": "<%= projectName %>",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "scss:build": "node-sass-chokidar src/ -o src/",
+    "scss:watch": "node-sass-chokidar src/ -o src/ --watch --recursive",
+    "react:start": "react-scripts start",
+    "watch": "npm-run-all -p scss:watch react:start",
+    "start": "npm-run-all scss:build watch",
+    "build": "npm run scss:build && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

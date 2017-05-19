@@ -7,6 +7,8 @@ class AppGenerator extends Generator {
     constructor(args, opts) {
         super(args, opts);
 
+        this.option('spa'); // Adds support for the --spa flag
+
         this.argument('projectName', { type: String, required: true });
     }
 
@@ -24,15 +26,28 @@ class AppGenerator extends Generator {
      * Where you prompt users for options (where you'd call this.prompt())
      */
     prompting() {
-        return this.prompt([
-            {
+        const prompts = [];
+
+        if (this.options.spa) {
+            prompts.push({
                 type: 'input',
                 name: 'appName',
                 message: 'The name of your app (used in the manifest)',
                 default: this.options.projectName
+            });
+            prompts.push({
+                type: 'input',
+                name: 'appNameShort',
+                message: 'A short name for use as the text on the users home screen',
+                default: this.options.projectName
+            });
+        }
+
+        return this.prompt(prompts).then((answers) => {
+            if (this.options.spa) {
+                this._appName = answers.appName;
+                this._appNameShort = answers.appNameShort;
             }
-        ]).then((answers) => {
-            this._appName = answers.appName;
         });
     }
 
@@ -42,7 +57,7 @@ class AppGenerator extends Generator {
      */
     configuring() {
         this.log(`2. Spawn dot files ...`);
-        this._copyStaticTemplates('dot');
+        this._copyStaticFiles('shared/dot');
     }
 
     /**
@@ -57,8 +72,13 @@ class AppGenerator extends Generator {
      */
     writing() {
         this.log(`3. Spawn initial project files ...`);
-        this._copyStaticTemplates('static');
-        this._copyDynamicTemplates();
+        this._copySharedFiles();
+
+        if (this.options.spa) {
+            this._copySpaFiles();
+        } else {
+            this._copyBaseFiles();
+        }
     }
 
     /**
@@ -89,14 +109,40 @@ class AppGenerator extends Generator {
         this.destinationRoot(this.destinationPath(this.options.projectName));
     }
 
+    _copySharedFiles() {
+        this._copyStaticFiles('shared/static');
+    }
+
     /**
-     * COPY TEMPLATES
+     * COPY BASE FILES
      *
      * @private
      */
-    _copyDynamicTemplates() {
+    _copyBaseFiles() {
+        this._copyStaticFiles('base/static');
+
+        // Dynamic Templates
         this.fs.copyTpl(
-            this.templatePath('dynamic/package.json'),
+            this.templatePath('base/dynamic/package.json'),
+            this.destinationPath('package.json'),
+            {
+                projectName: this.options.projectName
+            }
+        );
+    }
+
+    /**
+     * COPY SPA FILES
+     * Files only needed for Single Page Applications
+     *
+     * @private
+     */
+    _copySpaFiles() {
+        this._copyStaticFiles('spa/static');
+
+        // Dynamic Templates
+        this.fs.copyTpl(
+            this.templatePath('spa/dynamic/package.json'),
             this.destinationPath('package.json'),
             {
                 projectName: this.options.projectName
@@ -104,11 +150,11 @@ class AppGenerator extends Generator {
         );
 
         this.fs.copyTpl(
-            this.templatePath('dynamic/manifest.json'),
+            this.templatePath('spa/dynamic/manifest.json'),
             this.destinationPath('public/manifest.json'),
             {
                 appName: this._appName,
-                appNameShort: this._escapeAppName(this._appName)
+                appNameShort: this._appNameShort
             }
         );
     }
@@ -118,11 +164,11 @@ class AppGenerator extends Generator {
      *
      * @private
      */
-    _copyStaticTemplates(folderName) {
-        fs.readdir(this.templatePath(folderName), (err, files) => {
+    _copyStaticFiles(path) {
+        fs.readdir(this.templatePath(path), (err, files) => {
             files.forEach((file) => {
                 this.fs.copy(
-                    this.templatePath(`${folderName}/${file}`),
+                    this.templatePath(`${path}/${file}`),
                     this.destinationPath(file)
                 )
             })
@@ -135,11 +181,17 @@ class AppGenerator extends Generator {
      * @private
      */
     _yarn() {
-        this.yarnInstall([
+        const dependencies = [
             'react',
             'react-dom',
             'sass-mq'
-        ])
+        ];
+
+        if (this.options.spa) {
+            dependencies.push('react-router');
+        }
+
+        this.yarnInstall(dependencies, { 'dev': true });
     }
 
     /**
@@ -148,33 +200,17 @@ class AppGenerator extends Generator {
      * @private
      */
     _yarnDev() {
-        this.yarnInstall([
+        const devDependencies = [
             'react-scripts',
-            'sw-precache',
             'node-sass-chokidar',
             'npm-run-all'
-        ], { 'dev': true });
-    }
+        ];
 
-    /**
-     * ESCAPE APP NAME
-     *
-     * @param name
-     * @returns {string}
-     * @private
-     */
-    _escapeAppName(name) {
-        return name
-            .toLowerCase()
-            .replace(/ä+/g, 'ae')
-            .replace(/Ä+/g, 'Ae')
-            .replace(/ö+/g, 'oe')
-            .replace(/Ö+/g, 'Oe')
-            .replace(/ü+/g, 'ue')
-            .replace(/Ü+/g, 'Ue')
-            .replace(/\s+/g, '_')
-            .replace(/\W+/g, '')
-            .replace(/[_]/g, '-');
+        if (this.options.spa) {
+            devDependencies.push('sw-precache');
+        }
+
+        this.yarnInstall(devDependencies, { 'dev': true });
     }
 };
 
