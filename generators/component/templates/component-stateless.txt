@@ -1,0 +1,11 @@
+import React from 'react';
+import './<%= componentName %>.css';
+
+const <%= componentName %> = () => {
+    return (
+        <div className="c-<%= componentNameDash %>">
+        </div>
+    );
+};
+
+export default <%= componentName %>;
