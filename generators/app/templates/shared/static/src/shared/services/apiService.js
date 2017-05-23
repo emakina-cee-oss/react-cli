@@ -7,20 +7,24 @@
  */
 class Api {
 
+    constructor() {
+        this.foo = {};
+    }
+
     get() {
-        return {};
+        return this.foo;
     }
 
     put() {
-        return {};
+        return this.foo;
     }
 
     post() {
-        return {};
+        return this.foo;
     }
 
     delete() {
-        return {};
+        return this.foo;
     }
 }
 
