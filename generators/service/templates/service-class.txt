@@ -1,0 +1,7 @@
+/**
+ * <%= serviceNameUpperCase %>
+ */
+class <%= serviceName %> {
+}
+
+export default <%= serviceName %>;
