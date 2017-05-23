@@ -74,16 +74,9 @@ If you add new files add an import to _base-imports.scss which then gets importe
 a components SCSS file to get access to all settings and tools.
 
 ### SASS MQ
-To work with Media Queries we have included [SASS-MQ](Progressive Web App).
+To work with Media Queries [SASS-MQ](https://github.com/sass-mq/sass-mq) is included.
 The breakpoints are configured in `./src/scss/settings/_settings.breakpoints.scss`.
 
-
-## PWA Enhancements
-...
-
-
-## State Management
-...
 
 
 ## File Generators
@@ -97,3 +90,9 @@ yo emakinacee-react:component ComponentName --class
 ```
 By Default this will add a stateless component to add a class component add the 
 `--class` option flag.
+
+### Service
+```sh
+yo emakinacee-react:service AwesomeService
+```
+Services are placed in `src/shared/services`
