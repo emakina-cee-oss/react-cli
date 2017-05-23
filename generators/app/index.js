@@ -214,9 +214,7 @@ class AppGenerator extends Generator {
             'npm-run-all'
         ];
 
-        if (this.options.spa) {
-            devDependencies.push('sw-precache');
-        }
+        if (this.options.spa) {}
 
         this.yarnInstall(devDependencies, { 'dev': true });
     }
