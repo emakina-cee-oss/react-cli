@@ -1,0 +1,6 @@
+{
+    "extends": [
+        "emakinacee-base",
+        "emakinacee-react"
+    ]
+}

@@ -201,6 +201,14 @@ class AppGenerator extends Generator {
      */
     _yarnDev() {
         const devDependencies = [
+            'eslint',
+            'eslint-plugin-import',
+            'eslint-plugin-promise',
+            'eslint-plugin-standard',
+            'eslint-plugin-react',
+            'eslint-plugin-jsx-a11y',
+            'eslint-config-emakinacee-base',
+            'eslint-config-emakinacee-react',
             'react-scripts',
             'node-sass-chokidar',
             'npm-run-all'
