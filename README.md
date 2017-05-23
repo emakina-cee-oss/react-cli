@@ -51,13 +51,70 @@ without any fancy additions.
 
 
 ## SPA Setup
-For Single Page Applications the basic react stack will be extended with helpful libraries and
-features:
+For Single Page Applications [Cerebral](http://cerebraljs.com/docs/introduction/) 
+is added to the stack to provide route, state management etc.
 
-+ Routing
-+ [PWA enhancements](https://github.com/emakina-cee-oss/generator-emakinacee-react#pwa-enhancements)
-+ [State Management](https://github.com/emakina-cee-oss/generator-emakinacee-react#state-management)
 
+## Project Structure
+There is a `public` folder for static files and a `src` folder for the fancy app code.
+
+Inside of the `src` folder three main sections can be found. Components are encapsulated 
+in the `components` folder each component has it's own folder which contains all resources
+used by the component.
+
+The `shared` folder is for code which is shared and can be consumed from many components etc.
+Like services and helper functions etc.
+
+As Cerebral is used for the SPA-Setup the `modules` folder is introduced to split Cerebral's signals
+and state into modules. Therefore each module has it's own folder which contains actions, computes,
+and factories. If there are e.g. actions used in multiple modules those are moved to the `shared` 
+folder.
+
+```
+|-public
+    |-index.html
+    |-manifest.json
+|-src
+    |-components 
+        |-App 
+            |-App.js
+            |-App.spec.js
+            |-App.scss
+            |-images
+                |-logo.svg
+    |-modules 
+        |-App
+            |-actions
+                |-exampleAction.js
+                |-exampleAction.spec.js
+            |-computes
+                |-exampleCompute.js
+                |-exampleCompute.spec.js
+            |-factories
+                |-exampleFactory.js
+                |-exampleFactory.spec.js
+            |-AppModule.js
+            |-AppModule.spec.js
+    |-shared
+        |-actions
+            |-exampleAction.js
+            |-exampleAction.spec.js
+        |-computes
+            |-exampleCompute.js
+            |-exampleCompute.spec.js
+        |-factories
+            |-exampleFactory.js
+            |-exampleFactory.spec.js
+        |-services
+            |-exampleService.js
+            |-exampleService.spec.js
+        |-providers
+            |-exampleProvider.js
+            |-exampleProvider.spec.js
+    |-index.js
+    |-index.css
+    |-controller.js 
+```
 
 
 ## Styles (SCSS)
