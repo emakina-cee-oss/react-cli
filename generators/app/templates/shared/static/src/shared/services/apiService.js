@@ -1,11 +1,11 @@
 /**
- * API
+ * API SERVICE
  * This is just an example service to show where services
  * live in the folder structure.
  *
  * Feel free to extend or remove it.
  */
-class Api {
+class ApiService {
 
     constructor() {
         this.foo = {};
@@ -28,4 +28,4 @@ class Api {
     }
 }
 
-export default Api;
+export default ApiService;

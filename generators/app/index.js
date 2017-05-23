@@ -211,7 +211,8 @@ class AppGenerator extends Generator {
             'eslint-config-emakinacee-react',
             'react-scripts',
             'node-sass-chokidar',
-            'npm-run-all'
+            'npm-run-all',
+            'serve'
         ];
 
         if (this.options.spa) {}
