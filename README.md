@@ -1,6 +1,7 @@
 # generator-emakinacee-react
 
 _! Work in progress !_
+[![npm version](https://badge.fury.io/js/generator-emakinacee-react.svg)](http://badge.fury.io/js/generator-emakinacee-react)
 
 The EMAKINA CEE React generator is built on top of react-scripts used by 
 [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -185,3 +186,16 @@ the module right away.
 Spawns the following Files:
 + `src/modules/SomeModule/actions/awesomeAction.js`
 + `src/modules/SomeModule/actions/awesomeAction.spec.js`
+
+### Factory
+```sh
+yo emakinacee-react:gen factory awesomeFunctionFactory SomeModule
+```
+If the module is omitted the action will be created in the shared folder.
+
+If there is a module given which does not yet exist you will be asked to create
+the module right away.
+
+Spawns the following Files:
++ `src/modules/SomeModule/factory/awesomeFunctionFactory.js`
++ `src/modules/SomeModule/factory/awesomeFunctionFactory.spec.js`

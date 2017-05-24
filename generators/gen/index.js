@@ -50,10 +50,13 @@ class AppGenerator extends Generator {
             });
         }
 
+        const args = [this.options.name];
+        if (this.options.module) args.push(this.options.module);
+
         switch(this.options.type) {
             case 'component':
                 this.composeWith(require.resolve('../component'), {
-                    arguments: [this.options.name],
+                    arguments: args,
                     class: this.options.class,
                     connect: this.options.connect
                 });
@@ -61,24 +64,30 @@ class AppGenerator extends Generator {
 
             case 'service':
                 this.composeWith(require.resolve('../service'), {
-                    arguments: [this.options.name]
+                    arguments: args
                 });
                 break;
 
             case 'module':
                 this.composeWith(require.resolve('../module'), {
-                    arguments: [this.options.name]
+                    arguments: args
                 });
                 break;
 
             case 'action':
-                const args = [this.options.name];
-                if (this.options.module) args.push(this.options.module);
-
                 this.composeWith(require.resolve('../action'), {
                     arguments: args
                 });
                 break;
+
+            case 'factory':
+                this.composeWith(require.resolve('../factory'), {
+                    arguments: args
+                });
+                break;
+
+            default:
+                this.log(`Nothing is defined for type "${this.options.type}".`);
         }
     }
 

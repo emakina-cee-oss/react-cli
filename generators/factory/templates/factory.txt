@@ -1,0 +1,14 @@
+/**
+ * <%= nameUpperCase %>
+ *
+ * @returns {<%= nameInner %>} -
+ */
+const <%= name %> = () => {
+    function <%= nameInner %>() {
+
+    }
+
+    return <%= nameInner %>;
+};
+
+export default <%= name %>;
