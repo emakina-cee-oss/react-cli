@@ -146,10 +146,11 @@ See the following examples for more detail.
 
 ### Component
 ```sh
-yo emakinacee-react:gen component ComponentName --class
+yo emakinacee-react:gen component ComponentName
 ```
-By Default this will add a stateless component to add a class component add the 
-`--class` option flag.
+_Options_
++ --connect (Connect the Component to the Cerebral Controller)
++ --class (Generate a Component in ES6 Class Syntax)
 
 Spawns the following Files:
 + `src/components/ComponentName/ComponentName.js`
