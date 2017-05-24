@@ -1,0 +1,6 @@
+import <%= moduleName %> from './<%= moduleName %>';
+
+it('<%= moduleName %> exports object with state and signals', () => {
+    expect(<%= moduleName %>).toHaveProperty('state');
+    expect(<%= moduleName %>).toHaveProperty('signals');
+});

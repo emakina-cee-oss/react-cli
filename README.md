@@ -58,11 +58,12 @@ is added to the stack to provide route, state management etc.
 ## Project Structure
 There is a `public` folder for static files and a `src` folder for the fancy app code.
 
-Inside of the `src` folder three main sections can be found. Components are encapsulated 
+Inside the `src` folder three main sections can be found. Components are encapsulated 
 in the `components` folder each component has it's own folder which contains all resources
 used by the component.
 
-The `shared` folder is for code which is shared and can be consumed from many components etc.
+The `shared` folder is for code which is shared and can be consumed from many components and other
+parts of the app.
 Like services and helper functions etc.
 
 As Cerebral is used for the SPA-Setup the `modules` folder is introduced to split Cerebral's signals
@@ -152,4 +153,14 @@ By Default this will add a stateless component to add a class component add the
 ```sh
 yo emakinacee-react:service AwesomeService
 ```
-Services are placed in `src/shared/services`
+Spawns the following Files:
++ `src/shared/services/AwesomeService.js`
++ `src/shared/services/AwesomeService.spec.js`
+
+### Module
+```sh
+yo emakinacee-react:module AwesomeModule
+```
+Spawns the following Files:
++ `src/modules/Awesome/AwesomeModule.js`
++ `src/modules/Awesome/AwesomeModule.spec.js`
