@@ -138,13 +138,15 @@ The breakpoints are configured in `./src/scss/settings/_settings.breakpoints.scs
 
 
 ## File Generators
-To quickly add new files with the necessary boilerplate code there are different sub generators
-to add e.g. a new component.
-
+To quickly add new parts to your app like components modules etc. the syntax to you can use is
+```sh
+yo emakinacee-react:gen type name module
+```
+See the following examples for more detail.
 
 ### Component
 ```sh
-yo emakinacee-react:component ComponentName --class
+yo emakinacee-react:gen component ComponentName --class
 ```
 By Default this will add a stateless component to add a class component add the 
 `--class` option flag.
@@ -156,7 +158,7 @@ Spawns the following Files:
 
 ### Service
 ```sh
-yo emakinacee-react:service AwesomeService
+yo emakinacee-react:gen service AwesomeService
 ```
 Spawns the following Files:
 + `src/shared/services/AwesomeService.js`
@@ -164,8 +166,21 @@ Spawns the following Files:
 
 ### Module
 ```sh
-yo emakinacee-react:module AwesomeModule
+yo emakinacee-react:gen module AwesomeModule
 ```
 Spawns the following Files:
 + `src/modules/Awesome/AwesomeModule.js`
 + `src/modules/Awesome/AwesomeModule.spec.js`
+
+### Action
+```sh
+yo emakinacee-react:gen action awesomeAction SomeModule
+```
+If the module is omitted the action will be created in the shared folder.
+
+If there is a module given which does not yet exist you will be asked to create
+the module right away.
+
+Spawns the following Files:
++ `src/modules/SomeModule/actions/awesomeAction.js`
++ `src/modules/SomeModule/actions/awesomeAction.spec.js`

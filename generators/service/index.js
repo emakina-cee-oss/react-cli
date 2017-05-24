@@ -6,16 +6,14 @@ class AppGenerator extends Generator {
     constructor(args, opts) {
         super(args, opts);
 
-        this.argument('serviceName', { type: String, required: true });
+        this.argument('name', { type: String, required: true });
     }
-
 
     /**
      * WRITING
-     * Where you write the generator specific files (routes, controllers, etc)
      */
     writing() {
-        this.log(`Spawning ${this._getServiceName()} ...`);
+        this.log(`Spawning ${this._getName()} ...`);
         this._copyFiles();
     }
 
@@ -26,9 +24,9 @@ class AppGenerator extends Generator {
      * @returns {string}
      * @private
      */
-    _getServiceName() {
-        let serviceNamePascalCase = changeCase.pascalCase(this.options.serviceName);
-        return serviceNamePascalCase.endsWith('Service') ? serviceNamePascalCase : `${serviceNamePascalCase}Service`
+    _getName() {
+        let namePascalCase = changeCase.pascalCase(this.options.name);
+        return namePascalCase.endsWith('Service') ? namePascalCase : `${namePascalCase}Service`
     }
 
     /**
@@ -39,17 +37,17 @@ class AppGenerator extends Generator {
     _copyFiles() {
         this.fs.copyTpl(
             this.templatePath('service-class.txt'),
-            this.destinationPath(`src/shared/services/${this._getServiceName()}.js`),
+            this.destinationPath(`src/shared/services/${this._getName()}.js`),
             {
-                serviceName: this._getServiceName(),
-                serviceNameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getServiceName()))
+                name: this._getName(),
+                nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName()))
             }
         );
         this.fs.copyTpl(
             this.templatePath('service-test.txt'),
-            this.destinationPath(`src/shared/services/${this._getServiceName()}.spec.js`),
+            this.destinationPath(`src/shared/services/${this._getName()}.spec.js`),
             {
-                serviceName: this._getServiceName(),
+                name: this._getName(),
             }
         );
     }

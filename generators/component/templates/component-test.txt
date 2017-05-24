@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import <%= componentName %> from './<%= componentName %>';
+import <%= name %> from './<%= name %>';
 
 it('renders without error', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<<%= componentName %> />, div);
+    ReactDOM.render(<<%= name %> />, div);
 });

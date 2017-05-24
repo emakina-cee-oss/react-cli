@@ -1,5 +1,5 @@
-import <%= serviceName %> from './<%= serviceName %>';
+import <%= name %> from './<%= name %>';
 
-it('<%= serviceName %> is defined', () => {
-    expect(new <%= serviceName %>()).toBeInstanceOf(<%= serviceName %>);
+it('<%= name %> is defined', () => {
+    expect(new <%= name %>()).toBeInstanceOf(<%= name %>);
 });

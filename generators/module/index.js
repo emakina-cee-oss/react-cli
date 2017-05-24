@@ -6,16 +6,14 @@ class AppGenerator extends Generator {
     constructor(args, opts) {
         super(args, opts);
 
-        this.argument('moduleName', { type: String, required: true });
+        this.argument('name', { type: String, required: true });
     }
-
 
     /**
      * WRITING
-     * Where you write the generator specific files (routes, controllers, etc)
      */
     writing() {
-        this.log(`Spawning ${this._getModuleName()} ...`);
+        this.log(`Spawning ${this._getName()} ...`);
         this._copyFiles();
     }
 
@@ -26,9 +24,9 @@ class AppGenerator extends Generator {
      * @returns {string}
      * @private
      */
-    _getModuleName() {
-        let moduleNamePascalCase = changeCase.pascalCase(this.options.moduleName);
-        return moduleNamePascalCase.endsWith('Module') ? moduleNamePascalCase : `${moduleNamePascalCase}Module`
+    _getName() {
+        let namePascalCase = changeCase.pascalCase(this.options.name);
+        return namePascalCase.endsWith('Module') ? namePascalCase : `${namePascalCase}Module`
     }
 
     /**
@@ -38,9 +36,9 @@ class AppGenerator extends Generator {
      * @returns {string}
      * @private
      */
-    _getModuleNameShort() {
-        let moduleNamePascalCase = changeCase.pascalCase(this.options.modulesName);
-        return moduleNamePascalCase.endsWith('Module') ? moduleNamePascalCase.replace('Module', '') : moduleNamePascalCase
+    _getNameShort() {
+        let namePascalCase = changeCase.pascalCase(this.options.name);
+        return namePascalCase.endsWith('Module') ? namePascalCase.replace('Module', '') : namePascalCase
     }
 
     /**
@@ -51,13 +49,13 @@ class AppGenerator extends Generator {
     _copyFiles() {
         this.fs.copy(
             this.templatePath('module.txt'),
-            this.destinationPath(`src/modules/${this._getModuleNameShort()}/${this._getModuleName()}.js`)
+            this.destinationPath(`src/modules/${this._getNameShort()}/${this._getName()}.js`)
         );
         this.fs.copyTpl(
             this.templatePath('module-test.txt'),
-            this.destinationPath(`src/modules/${this._getModuleNameShort()}/${this._getModuleName()}.spec.js`),
+            this.destinationPath(`src/modules/${this._getNameShort()}/${this._getName()}.spec.js`),
             {
-                moduleName: this._getModuleName(),
+                name: this._getName(),
             }
         );
     }

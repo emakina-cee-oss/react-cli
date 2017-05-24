@@ -1,11 +1,11 @@
 import React from 'react';
-import './<%= componentName %>.css';
+import './<%= name %>.css';
 
-const <%= componentName %> = () => {
+const <%= name %> = () => {
     return (
-        <div className="c-<%= componentNameDash %>">
+        <div className="c-<%= nameDash %>">
         </div>
     );
 };
 
-export default <%= componentName %>;
+export default <%= name %>;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './<%= componentName %>.css';
+import './<%= name %>.css';
 
-class <%= componentName %> extends Component {
+class <%= name %> extends Component {
     render() {
         return (
-            <div className="c-<%= componentNameDash %>">
+            <div className="c-<%= nameDash %>">
             </div>
         );
     }
 }
 
-export default <%= componentName %>;
+export default <%= name %>;
