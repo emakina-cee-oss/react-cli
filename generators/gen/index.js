@@ -12,6 +12,7 @@ class AppGenerator extends Generator {
         this.argument('module', { type: String, required: false });
 
         this.option('class');
+        this.option('connect');
     }
 
     /**
@@ -53,7 +54,8 @@ class AppGenerator extends Generator {
             case 'component':
                 this.composeWith(require.resolve('../component'), {
                     arguments: [this.options.name],
-                    class: this.options.class
+                    class: this.options.class,
+                    connect: this.options.connect
                 });
                 break;
 

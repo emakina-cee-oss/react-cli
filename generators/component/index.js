@@ -8,6 +8,7 @@ class AppGenerator extends Generator {
 
         this.argument('name', { type: String, required: true });
         this.option('class');
+        this.option('connect');
     }
 
     /**
@@ -15,13 +16,23 @@ class AppGenerator extends Generator {
      */
     writing() {
         this.log(`Spawning ${this._getName()} ...`);
-        this._copySharedFiles();
 
-        if (this.options.class) {
-            this._copyClassComponent();
+        const templatesToCopy = [
+            'component-scss.txt'
+        ];
+
+        if (this.options.connect) {
+            templatesToCopy.push('component-connected.txt');
+            templatesToCopy.push('component-connected-test.txt')
+        } else if (this.options.class) {
+            templatesToCopy.push('component-class.txt');
+            templatesToCopy.push('component-test.txt')
         } else {
-            this._copyStatelessComponent();
+            templatesToCopy.push('component.txt');
+            templatesToCopy.push('component-test.txt')
         }
+
+        this._copyFiles(templatesToCopy);
     }
 
     /**
@@ -36,59 +47,26 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * COPY SHARED FILES
+     * COPY FILES
      *
+     * @param templatesToCopy
      * @private
      */
-    _copySharedFiles() {
-        this.fs.copyTpl(
-            this.templatePath('component-scss.txt'),
-            this.destinationPath(`src/components/${this._getName()}/${this._getName()}.scss`),
-            {
-                name: this._getName(),
-                nameDash: changeCase.paramCase(this._getName())
-            }
-        );
-        this.fs.copyTpl(
-            this.templatePath('component-test.txt'),
-            this.destinationPath(`src/components/${this._getName()}/${this._getName()}.spec.js`),
-            {
-                name: this._getName(),
-                nameDash: changeCase.paramCase(this._getName())
-            }
-        );
-    }
+    _copyFiles(templatesToCopy) {
+        templatesToCopy.forEach((template) => {
+            let fileEnding = 'js';
+            if (template.includes('test')) fileEnding = 'spec.js';
+            if (template.includes('scss')) fileEnding = 'scss';
 
-    /**
-     * COPY BASE FILES
-     *
-     * @private
-     */
-    _copyClassComponent() {
-        this.fs.copyTpl(
-            this.templatePath('component-class.txt'),
-            this.destinationPath(`src/components/${this._getName()}/${this._getName()}.js`),
-            {
-                name: this._getName(),
-                nameDash: changeCase.paramCase(this._getName())
-            }
-        );
-    }
-
-    /**
-     * COPY BASE FILES
-     *
-     * @private
-     */
-    _copyStatelessComponent() {
-        this.fs.copyTpl(
-            this.templatePath('component-stateless.txt'),
-            this.destinationPath(`src/components/${this._getName()}/${this._getName()}.js`),
-            {
-                name: this._getName(),
-                nameDash: changeCase.paramCase(this._getName())
-            }
-        );
+            this.fs.copyTpl(
+                this.templatePath(template),
+                this.destinationPath(`src/components/${this._getName()}/${this._getName()}.${fileEnding}`),
+                {
+                    name: this._getName(),
+                    nameDash: changeCase.paramCase(this._getName())
+                }
+            );
+        });
     }
 };
 

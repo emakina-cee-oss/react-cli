@@ -1,0 +1,13 @@
+import React from 'react';
+import {connect} from 'cerebral/react';
+import './<%= name %>.css';
+
+const <%= name %> = () => {
+    return (
+        <div className="c-<%= nameDash %>">
+        </div>
+    );
+};
+
+export default connect({
+}, <%= name %>);
