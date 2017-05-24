@@ -1,0 +1,6 @@
+import <%= name %> from './<%= name %>';
+
+it('<%= name %> is a computed with args and value', () => {
+    expect(<%= name %>).toHaveProperty('args');
+    expect(<%= name %>).toHaveProperty('value');
+});

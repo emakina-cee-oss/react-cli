@@ -199,3 +199,16 @@ the module right away.
 Spawns the following Files:
 + `src/modules/SomeModule/factory/awesomeFunctionFactory.js`
 + `src/modules/SomeModule/factory/awesomeFunctionFactory.spec.js`
+
+### Compute
+```sh
+yo emakinacee-react:gen compute awesomeCompute SomeModule
+```
+If the module is omitted the action will be created in the shared folder.
+
+If there is a module given which does not yet exist you will be asked to create
+the module right away.
+
+Spawns the following Files:
++ `src/modules/SomeModule/computes/awesomeCompute.js`
++ `src/modules/SomeModule/computes/awesomeCompute.spec.js`

@@ -86,6 +86,12 @@ class AppGenerator extends Generator {
                 });
                 break;
 
+            case 'compute':
+                this.composeWith(require.resolve('../compute'), {
+                    arguments: args
+                });
+                break;
+
             default:
                 this.log(`Nothing is defined for type "${this.options.type}".`);
         }
