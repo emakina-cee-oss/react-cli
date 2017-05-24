@@ -188,10 +188,11 @@ class AppGenerator extends Generator {
         ];
 
         if (this.options.spa) {
-            dependencies.push('react-router');
+            dependencies.push('cerebral@next');
+            dependencies.push('@cerebral/router@next');
         }
 
-        this.yarnInstall(dependencies, { 'dev': true });
+        this.yarnInstall(dependencies);
     }
 
     /**
