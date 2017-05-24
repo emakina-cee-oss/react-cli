@@ -149,6 +149,11 @@ yo emakinacee-react:component ComponentName --class
 By Default this will add a stateless component to add a class component add the 
 `--class` option flag.
 
+Spawns the following Files:
++ `src/components/ComponentName/ComponentName.js`
++ `src/components/ComponentName/ComponentName.scss`
++ `src/components/ComponentName/ComponentName.spec.js`
+
 ### Service
 ```sh
 yo emakinacee-react:service AwesomeService

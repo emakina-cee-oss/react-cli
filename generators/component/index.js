@@ -16,7 +16,7 @@ class AppGenerator extends Generator {
      * Where you write the generator specific files (routes, controllers, etc)
      */
     writing() {
-        this.log(`Spawning component files ...`);
+        this.log(`Spawning ${this._getComponentName()} ...`);
         this._copySharedFiles();
 
         if (this.options.class) {
@@ -27,6 +27,17 @@ class AppGenerator extends Generator {
     }
 
     /**
+     * GET COMPONENT NAME
+     * Ensures PascalCase.
+     *
+     * @returns {string}
+     * @private
+     */
+    _getComponentName() {
+        return changeCase.pascalCase(this.options.componentName);
+    }
+
+    /**
      * COPY SHARED FILES
      *
      * @private
@@ -34,18 +45,18 @@ class AppGenerator extends Generator {
     _copySharedFiles() {
         this.fs.copyTpl(
             this.templatePath('component-scss.txt'),
-            this.destinationPath(`src/components/${this.options.componentName}/${this.options.componentName}.scss`),
+            this.destinationPath(`src/components/${this._getComponentName()}/${this._getComponentName()}.scss`),
             {
-                componentName: this.options.componentName,
-                componentNameDash: changeCase.paramCase(this.options.componentName)
+                componentName: this._getComponentName(),
+                componentNameDash: changeCase.paramCase(this._getComponentName())
             }
         );
         this.fs.copyTpl(
             this.templatePath('component-test.txt'),
-            this.destinationPath(`src/components/${this.options.componentName}/${this.options.componentName}.test.js`),
+            this.destinationPath(`src/components/${this._getComponentName()}/${this._getComponentName()}.spec.js`),
             {
-                componentName: this.options.componentName,
-                componentNameDash: changeCase.paramCase(this.options.componentName)
+                componentName: this._getComponentName(),
+                componentNameDash: changeCase.paramCase(this._getComponentName())
             }
         );
     }
@@ -58,10 +69,10 @@ class AppGenerator extends Generator {
     _copyClassComponent() {
         this.fs.copyTpl(
             this.templatePath('component-class.txt'),
-            this.destinationPath(`src/components/${this.options.componentName}/${this.options.componentName}.js`),
+            this.destinationPath(`src/components/${this._getComponentName()}/${this._getComponentName()}.js`),
             {
-                componentName: this.options.componentName,
-                componentNameDash: changeCase.paramCase(this.options.componentName)
+                componentName: this._getComponentName(),
+                componentNameDash: changeCase.paramCase(this._getComponentName())
             }
         );
     }
@@ -74,10 +85,10 @@ class AppGenerator extends Generator {
     _copyStatelessComponent() {
         this.fs.copyTpl(
             this.templatePath('component-stateless.txt'),
-            this.destinationPath(`src/components/${this.options.componentName}/${this.options.componentName}.js`),
+            this.destinationPath(`src/components/${this._getComponentName()}/${this._getComponentName()}.js`),
             {
-                componentName: this.options.componentName,
-                componentNameDash: changeCase.paramCase(this.options.componentName)
+                componentName: this._getComponentName(),
+                componentNameDash: changeCase.paramCase(this._getComponentName())
             }
         );
     }

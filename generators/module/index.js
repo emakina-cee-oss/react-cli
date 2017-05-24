@@ -20,7 +20,7 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * GET SERVICE NAME
+     * GET MODULE NAME
      * Ensures PascalCase with 'Module' postfix.
      *
      * @returns {string}
@@ -32,7 +32,7 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * GET SERVICE NAME
+     * GET MODULE NAME
      * Ensures PascalCase and strips a 'Module' postfix.
      *
      * @returns {string}
