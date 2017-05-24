@@ -1,7 +1,7 @@
 # generator-emakinacee-react
 
-_! Work in progress !_
 [![npm version](https://badge.fury.io/js/generator-emakinacee-react.svg)](http://badge.fury.io/js/generator-emakinacee-react)
+_! Work in progress !_
 
 The EMAKINA CEE React generator is built on top of react-scripts used by 
 [Create React App](https://github.com/facebookincubator/create-react-app).
