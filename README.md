@@ -16,10 +16,9 @@ And in addition you have access to some even more awesome features like
 ```sh
 npm install -g generator-emakinacee-react
 ```
-Also make sure you have installed [Yarn](https://yarnpkg.com/en/) 
-and the [Yeoman](http://yeoman.io/) command line utility `yo`.
+Also make sure you have installed the [Yeoman](http://yeoman.io/) command line utility `yo`.
 ```sh
-npm install -g yarn yo
+npm install -g yo
 ```
 
 ### 2. Create your project
