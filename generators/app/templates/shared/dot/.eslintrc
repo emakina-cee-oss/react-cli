@@ -5,6 +5,8 @@
     ],
 
     "globals": {
-        "it": false
+        "it": false,
+        "fetch": false,
+        "URL": false
     }
 }
