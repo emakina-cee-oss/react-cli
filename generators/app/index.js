@@ -184,7 +184,7 @@ class AppGenerator extends Generator {
         if (this.options.yarn) {
             this.yarnInstall(dependencies);
         } else {
-            this.npmInstall(dependencies);
+            this.npmInstall(dependencies, { 'save': true });
         }
     }
 
@@ -214,7 +214,7 @@ class AppGenerator extends Generator {
         if (this.options.yarn) {
             this.yarnInstall(devDependencies, { 'dev': true });
         } else {
-            this.npmInstall(devDependencies, { 'dev': true });
+            this.npmInstall(devDependencies, { 'save-dev': true });
         }
     }
 };
