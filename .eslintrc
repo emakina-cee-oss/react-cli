@@ -1,0 +1,5 @@
+{
+    "extends": [
+        "./generators/app/templates/shared/dot/.eslintrc"
+    ]
+}
