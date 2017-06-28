@@ -37,6 +37,14 @@ just add the `--spa` option flag to the command.
 yo emakinacee-react my-awesome-project --spa
 ```
 
+#### Yarn
+To use [Yarn](https://yarnpkg.com/en/) in addition to NPM simply add the option flag.
+```sh
+yo emakinacee-react my-awesome-project --yarn
+```
+
+
+
 ### 3. Take off
 ```sh
 cd my-awesome-project
