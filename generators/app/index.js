@@ -7,7 +7,8 @@ class AppGenerator extends Generator {
     constructor(args, opts) {
         super(args, opts);
 
-        this.option('spa'); // Adds support for the --spa flag
+        this.option('spa');
+        this.option('yarn');
 
         this.argument('projectName', { type: String, required: true });
     }
@@ -76,8 +77,8 @@ class AppGenerator extends Generator {
      */
     install() {
         this.log(`4. Installing dependencies ...`);
-        this._yarn();
-        this._yarnDev();
+        this._packagesInstall();
+        this._devPackagesInstall();
     }
 
     /**
@@ -164,11 +165,11 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * YARN
+     * Install packages
      *
      * @private
      */
-    _yarn() {
+    _packagesInstall() {
         const dependencies = [
             'react',
             'react-dom',
@@ -180,15 +181,19 @@ class AppGenerator extends Generator {
             dependencies.push('@cerebral/router');
         }
 
-        this.yarnInstall(dependencies);
+        if (this.options.yarn) {
+            this.yarnInstall(dependencies);
+        } else {
+            this.npmInstall(dependencies);
+        }
     }
 
     /**
-     * YARN DEV
+     * Install dev-packages
      *
      * @private
      */
-    _yarnDev() {
+    _devPackagesInstall() {
         const devDependencies = [
             'eslint',
             'eslint-plugin-import',
@@ -206,7 +211,11 @@ class AppGenerator extends Generator {
 
         if (this.options.spa) {}
 
-        this.yarnInstall(devDependencies, { 'dev': true });
+        if (this.options.yarn) {
+            this.yarnInstall(devDependencies, { 'dev': true });
+        } else {
+            this.npmInstall(devDependencies, { 'dev': true });
+        }
     }
 };
 
