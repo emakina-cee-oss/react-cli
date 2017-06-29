@@ -19,6 +19,9 @@ class AppGenerator extends Generator {
     initializing() {
         this.log(`1. Creating project folder (${this.options.projectName}) ...`);
         this._createProjectFolder();
+
+        // this._appName = this.options.projectName;
+        // this._appNameShort = this.options.projectName;
     }
 
     /**

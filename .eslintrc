@@ -1,5 +1,5 @@
 {
     "extends": [
-        "./generators/app/templates/shared/dot/.eslintrc"
+        "./packages/generator-emakinacee-react/generators/app/templates/shared/dot/.eslintrc"
     ]
 }
