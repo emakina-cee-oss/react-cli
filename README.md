@@ -218,3 +218,8 @@ the module right away.
 Spawns the following Files:
 + `src/modules/SomeModule/computes/awesomeCompute.js`
 + `src/modules/SomeModule/computes/awesomeCompute.spec.js`
+
+
+## How to Contribute
+We really appreciate every contribution, so if you have some cool ideas have a look to the 
+[Contributing Guidelines](https://github.com/emakina-cee-oss/generator-emakinacee-react/blob/master/CONTRIBUTING.md).
