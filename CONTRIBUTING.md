@@ -36,3 +36,9 @@ the correct label.
 * bug
 * feature
 * change request
+
+
+## Commit Messages
+Prefix commit messages with a package description it belongs to like follows:
+* `[react-cli] change something`
+* `[generator-emakinacee-react] change something`
