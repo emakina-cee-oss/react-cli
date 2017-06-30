@@ -35,7 +35,7 @@ class AppGenerator extends Generator {
             prompts.push({
                 type: 'input',
                 name: 'appName',
-                message: 'The name of your app (used in the manifest)',
+                message: 'The name of your app used in the manifest',
                 default: this.options.projectName
             });
             prompts.push({
