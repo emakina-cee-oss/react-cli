@@ -1,55 +1,45 @@
-# generator-emakinacee-react
+# EMAKINA React CLI
 
-[![npm version](https://badge.fury.io/js/generator-emakinacee-react.svg)](http://badge.fury.io/js/generator-emakinacee-react)
+[![npm version](https://badge.fury.io/js/emakina-react-cli.svg)](http://badge.fury.io/js/emakina-react-cli)
 
-The EMAKINA CEE React generator is built on top of react-scripts used by 
+The EMAKINA React CLI is built on top of react-scripts used by 
 [Create React App](https://github.com/facebookincubator/create-react-app).
 This way you can utilize all the awesome features of create-react-app.
 
-And in addition you have access to some even more awesome features like
-[File Generators](https://github.com/emakina-cee-oss/generator-emakinacee-react#file-generators).
+In addition you have access to some even more awesome features like
+[File Generators](https://github.com/emakina-cee-oss/react-cli#file-generators).
 
 
 ## Getting started
 
-### 1. Install the generator
+### 1. Install the CLI
 ```sh
-npm install -g generator-emakinacee-react
-```
-Also make sure you have installed the [Yeoman](http://yeoman.io/) command line utility `yo`.
-```sh
-npm install -g yo
+npm install -g emakina-react-cli
 ```
 
-### 2. Create your project
-
-For the [Basic Setup](https://github.com/emakina-cee-oss/generator-emakinacee-react#basic-setup) 
-run the generator and provide the project name.
+### 2. Create a new Project
 ```sh
-yo emakinacee-react my-awesome-project
-```
-The generator then creates a new folder called `my-awesome-project` 
-and sets up all the files and dependencies needed to take off.
-
-If you need the [SPA Setup](https://github.com/emakina-cee-oss/generator-emakinacee-react#spa-setup) 
-just add the `--spa` option flag to the command.
-```sh
-yo emakinacee-react my-awesome-project --spa
+react new <projectName>
 ```
 
-#### Yarn
-To use [Yarn](https://yarnpkg.com/en/) in addition to NPM simply add the option flag.
-```sh
-yo emakinacee-react my-awesome-project --yarn
-```
+The command above will bootstrap a new project in a new directory relative to the path you are in.
+Without any option the [Basic Setup](https://github.com/emakina-cee-oss/react-cli#basic-setup)
+will be used.
 
+To bootstrap a new project ready to build a Single Page Application you can enable the 
+[SPA Setup](https://github.com/emakina-cee-oss/react-cli#spa-setup) 
+by adding the option flag `--spa` 
 
+To use [Yarn](https://yarnpkg.com/en/) in addition to NPM simply add the option flag `--yarn`.
 
 ### 3. Take off
 ```sh
-cd my-awesome-project
+cd <projectName>
 npm start
 ```
+
+> Also have a look to the [Create React App](https://github.com/facebookincubator/create-react-app) 
+documentation for more information.
 
 
 ## Basic Setup
@@ -147,13 +137,23 @@ The breakpoints are configured in `./src/scss/settings/_settings.breakpoints.scs
 ## File Generators
 To quickly add new parts to your app like components modules etc. the syntax to you can use is
 ```sh
-yo emakinacee-react:gen type name module
+react g <scaffold> <name> [module]
 ```
+
+Scaffold  | Usage
+---       | ---
+[Component](https://github.com/emakina-cee-oss/react-cli/wiki) | `react g component AwesomeComponent`
+[Module](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g module AwesomeModule`
+[Service](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g service AwesomeService`
+[Action](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g action awesomeAction SomeModule`
+[Factory](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g factory awesomeFactory SomeModule`
+[Compute](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g compute awesomeCompute SomeModule`
+
 See the following examples for more detail.
 
 ### Component
 ```sh
-yo emakinacee-react:gen component ComponentName
+react g component ComponentName
 ```
 _Options_
 + --connect (Connect the Component to the Cerebral Controller)
@@ -166,7 +166,7 @@ Spawns the following Files:
 
 ### Service
 ```sh
-yo emakinacee-react:gen service AwesomeService
+react g service AwesomeService
 ```
 Spawns the following Files:
 + `src/shared/services/AwesomeService.js`
@@ -174,7 +174,7 @@ Spawns the following Files:
 
 ### Module
 ```sh
-yo emakinacee-react:gen module AwesomeModule
+react g module AwesomeModule
 ```
 Spawns the following Files:
 + `src/modules/Awesome/AwesomeModule.js`
@@ -182,7 +182,7 @@ Spawns the following Files:
 
 ### Action
 ```sh
-yo emakinacee-react:gen action awesomeAction SomeModule
+react g action awesomeAction SomeModule
 ```
 If the module is omitted the action will be created in the shared folder.
 
@@ -195,7 +195,7 @@ Spawns the following Files:
 
 ### Factory
 ```sh
-yo emakinacee-react:gen factory awesomeFunctionFactory SomeModule
+react g factory awesomeFunctionFactory SomeModule
 ```
 If the module is omitted the action will be created in the shared folder.
 
@@ -208,7 +208,7 @@ Spawns the following Files:
 
 ### Compute
 ```sh
-yo emakinacee-react:gen compute awesomeCompute SomeModule
+react g compute awesomeCompute SomeModule
 ```
 If the module is omitted the action will be created in the shared folder.
 
@@ -222,4 +222,4 @@ Spawns the following Files:
 
 ## How to Contribute
 We really appreciate every contribution, so if you have some cool ideas have a look to the 
-[Contributing Guidelines](https://github.com/emakina-cee-oss/generator-emakinacee-react/blob/master/CONTRIBUTING.md).
+[Contributing Guidelines](https://github.com/emakina-cee-oss/react-cli/blob/master/CONTRIBUTING.md).
