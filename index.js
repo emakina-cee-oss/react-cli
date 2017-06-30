@@ -4,9 +4,10 @@ const {spawnSync} = require('child_process');
 const program = require('commander');
 const packageInfo = require('./package.json');
 
+
 program.version(packageInfo.version);
 
-// NEW COMMAND 'new'
+// Add command to generate a new project.
 program
     .command('new <name>')
     .option('-s, --spa', 'Create new single page application')
@@ -25,7 +26,7 @@ program
         });
     });
 
-// GENERATE COMMAND 'g'
+// Add command to generate new files.
 program
     .command('g <type> <name> [module]')
     .option('-c, --connect', 'Connect Component to Cerebral')
@@ -47,3 +48,8 @@ program
     });
 
 program.parse(process.argv);
+
+// Show help if no args applied.
+if (!program.args.length) {
+    program.help();
+}
