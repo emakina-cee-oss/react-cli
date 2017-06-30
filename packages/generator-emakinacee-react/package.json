@@ -18,17 +18,17 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/emakina-cee-oss/generator-emakinacee-react"
+    "url": "https://github.com/emakina-cee-oss/react-cli"
   },
   "bugs": {
-    "url": "https://github.com/emakina-cee-oss/generator-emakinacee-react/issues"
+    "url": "https://github.com/emakina-cee-oss/react-cli/issues"
   },
-  "homepage": "https://github.com/emakina-cee-oss/generator-emakinacee-react",
+  "homepage": "https://github.com/emakina-cee-oss/react-cli",
   "files": [
     "generators"
   ],
   "dependencies": {
-    "change-case": "^3.0.1",
-    "yeoman-generator": "^1.1.1"
+    "change-case": "3.0.1",
+    "yeoman-generator": "1.1.1"
   }
 }
