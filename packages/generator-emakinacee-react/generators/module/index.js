@@ -11,6 +11,8 @@ class AppGenerator extends Generator {
 
     /**
      * WRITING
+     *
+     * @returns {undefined}
      */
     writing() {
         this.log(`Spawning ${this._getName()} ...`);
@@ -18,32 +20,31 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * GET MODULE NAME
-     * Ensures PascalCase with 'Module' postfix.
+     * GET NAME
      *
-     * @returns {string}
+     * @returns {string} - valid module name
      * @private
      */
     _getName() {
-        let namePascalCase = changeCase.pascalCase(this.options.name);
-        return namePascalCase.endsWith('Module') ? namePascalCase : `${namePascalCase}Module`
+        const namePascalCase = changeCase.pascalCase(this.options.name);
+        return namePascalCase.endsWith('Module') ? namePascalCase : `${namePascalCase}Module`;
     }
 
     /**
-     * GET MODULE NAME
-     * Ensures PascalCase and strips a 'Module' postfix.
+     * GET NAME SHORT
      *
-     * @returns {string}
+     * @returns {string} - valid short name
      * @private
      */
     _getNameShort() {
-        let namePascalCase = changeCase.pascalCase(this.options.name);
-        return namePascalCase.endsWith('Module') ? namePascalCase.replace('Module', '') : namePascalCase
+        const namePascalCase = changeCase.pascalCase(this.options.name);
+        return namePascalCase.endsWith('Module') ? namePascalCase.replace('Module', '') : namePascalCase;
     }
 
     /**
      * COPY FILES
      *
+     * @returns {undefined}
      * @private
      */
     _copyFiles() {

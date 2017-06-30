@@ -11,6 +11,8 @@ class AppGenerator extends Generator {
 
     /**
      * WRITING
+     *
+     * @returns {undefined}
      */
     writing() {
         this.log(`Spawning ${this._getName()} ...`);
@@ -18,20 +20,20 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * GET SERVICE NAME
-     * Ensures PascalCase with 'Service' postfix.
+     * GET NAME
      *
-     * @returns {string}
+     * @returns {string} - valid service name
      * @private
      */
     _getName() {
-        let namePascalCase = changeCase.pascalCase(this.options.name);
-        return namePascalCase.endsWith('Service') ? namePascalCase : `${namePascalCase}Service`
+        const namePascalCase = changeCase.pascalCase(this.options.name);
+        return namePascalCase.endsWith('Service') ? namePascalCase : `${namePascalCase}Service`;
     }
 
     /**
      * COPY FILES
      *
+     * @returns {undefined}
      * @private
      */
     _copyFiles() {

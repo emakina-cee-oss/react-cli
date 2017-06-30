@@ -15,17 +15,18 @@ class AppGenerator extends Generator {
 
     /**
      * INITIALIZING
+     *
+     * @returns {undefined}
      */
     initializing() {
         this.log(`1. Creating project folder (${this.options.projectName}) ...`);
         this._createProjectFolder();
-
-        // this._appName = this.options.projectName;
-        // this._appNameShort = this.options.projectName;
     }
 
     /**
      * PROMTING
+     *
+     * @returns {undefined}
      */
     prompting() {
         const prompts = [];
@@ -55,17 +56,21 @@ class AppGenerator extends Generator {
 
     /**
      * CONFIGURING
+     *
+     * @returns {undefined}
      */
     configuring() {
-        this.log(`2. Spawn dot files ...`);
+        this.log('2. Spawn dot files ...');
         this._copyStaticFiles('shared/dot');
     }
 
     /**
      * WRITING
+     *
+     * @returns {undefined}
      */
     writing() {
-        this.log(`3. Spawn initial project files ...`);
+        this.log('3. Spawn initial project files ...');
         this._copySharedFiles();
 
         if (this.options.spa) {
@@ -77,23 +82,28 @@ class AppGenerator extends Generator {
 
     /**
      * INSTALL
+     *
+     * @returns {undefined}
      */
     install() {
-        this.log(`4. Installing dependencies ...`);
+        this.log('4. Installing dependencies ...');
         this._packagesInstall();
         this._devPackagesInstall();
     }
 
     /**
      * END
+     *
+     * @returns {undefined}
      */
     end() {
-        this.log(`5. DONE - Awesome!`);
+        this.log('5. DONE - Awesome!');
     }
 
     /**
      * CREATE PROJECT FOLDER
      *
+     * @returns {undefined}
      * @private
      */
     _createProjectFolder() {
@@ -108,6 +118,7 @@ class AppGenerator extends Generator {
     /**
      * COPY BASE FILES
      *
+     * @returns {undefined}
      * @private
      */
     _copyBaseFiles() {
@@ -127,6 +138,7 @@ class AppGenerator extends Generator {
      * COPY SPA FILES
      * Files only needed for Single Page Applications
      *
+     * @returns {undefined}
      * @private
      */
     _copySpaFiles() {
@@ -154,22 +166,27 @@ class AppGenerator extends Generator {
     /**
      * COPY STATIC TEMPLATES
      *
+     * @param {string} path - destination to copy templates
+     * @returns {undefined}
      * @private
      */
     _copyStaticFiles(path) {
         fs.readdir(this.templatePath(path), (err, files) => {
+            if (err) this.log(err);
+
             files.forEach((file) => {
                 this.fs.copy(
                     this.templatePath(`${path}/${file}`),
                     this.destinationPath(file)
-                )
-            })
+                );
+            });
         });
     }
 
     /**
      * Install packages
      *
+     * @returns {undefined}
      * @private
      */
     _packagesInstall() {
@@ -194,6 +211,7 @@ class AppGenerator extends Generator {
     /**
      * Install dev-packages
      *
+     * @returns {undefined}
      * @private
      */
     _devPackagesInstall() {
@@ -211,8 +229,6 @@ class AppGenerator extends Generator {
             'npm-run-all',
             'serve'
         ];
-
-        if (this.options.spa) {}
 
         if (this.options.yarn) {
             this.yarnInstall(devDependencies, { 'dev': true });

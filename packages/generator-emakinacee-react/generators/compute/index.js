@@ -1,4 +1,3 @@
-const fs = require('fs');
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 
@@ -13,6 +12,8 @@ class AppGenerator extends Generator {
 
     /**
      * WRITING
+     *
+     * @returns {undefined}
      */
     writing() {
         this.log(`Spawning ${this._getName()} ...`);
@@ -20,22 +21,20 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * GET ACTION NAME
-     * Ensures camelCase with 'Action' postfix.
+     * GET NAME
      *
-     * @returns {string}
+     * @returns {string} - valid compute name
      * @private
      */
     _getName() {
-        let nameCamelCase = changeCase.camelCase(this.options.name);
-        return nameCamelCase.endsWith('Compute') ? nameCamelCase : `${nameCamelCase}Compute`
+        const nameCamelCase = changeCase.camelCase(this.options.name);
+        return nameCamelCase.endsWith('Compute') ? nameCamelCase : `${nameCamelCase}Compute`;
     }
 
     /**
-     * GET ACTION NAME
-     * Ensures camelCase with 'Action' postfix.
+     * GET MODULE
      *
-     * @returns {string}
+     * @returns {string} - valid module name
      * @private
      */
     _getModule() {
@@ -44,9 +43,8 @@ class AppGenerator extends Generator {
 
     /**
      * GET PATH
-     * Return path where the action should be spawned.
      *
-     * @returns {string}
+     * @returns {string} - valid path
      * @private
      */
     _getPath() {
@@ -56,6 +54,7 @@ class AppGenerator extends Generator {
     /**
      * COPY FILES
      *
+     * @returns {undefined}
      * @private
      */
     _copyFiles() {
