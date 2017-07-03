@@ -137,8 +137,13 @@ The breakpoints are configured in `./src/scss/settings/_settings.breakpoints.scs
 ## File Generators
 To quickly add new parts to your app like components modules etc. the syntax to you can use is
 ```sh
+react generate <scaffold> <name> [module]
+```
+*As a shorthand you can type the command above as:*
+```sh
 react g <scaffold> <name> [module]
 ```
+
 
 Scaffold  | Usage
 ---       | ---

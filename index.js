@@ -4,48 +4,75 @@ const {spawnSync} = require('child_process');
 const program = require('commander');
 const packageInfo = require('./package.json');
 
+/**
+ * GENERATE NEW PROJECT
+ *
+ * @param {string} name - name of the project
+ * @param {Object} options - commander options object
+ * @returns {undefined}
+ */
+const generateNewProject = (name, options) => {
+    const args = [
+        'emakinacee-react',
+        name
+    ];
+    if (options.spa) args.push('--spa');
+    if (options.yarn) args.push('--yarn');
+
+    spawnSync(join(__dirname, 'node_modules', '.bin', 'yo'), args, {
+        stdio: 'inherit',
+        shell: true
+    });
+};
+
+/**
+ * GENERATE SCAFFOLD
+ *
+ * @param {string} type - the type of scaffold
+ * @param {string} name - name that should be applied to generated files
+ * @param {string} module - (optional) the module the new scaffold will be placed in
+ * @param {Object} options - commander options object
+ * @returns {undefined}
+ */
+const generateScaffold = (type, name, module, options) => {
+    const args = [
+        'emakinacee-react:gen',
+        type,
+        name
+    ];
+    if (module) args.push(module);
+    if (options.connect) args.push('--connect');
+    if (options.class) args.push('--class');
+
+    spawnSync(join(__dirname, 'node_modules', '.bin', 'yo'), args, {
+        stdio: 'inherit',
+        shell: true
+    });
+};
+
 
 program.version(packageInfo.version);
 
-// Add command to generate a new project.
 program
     .command('new <name>')
-    .option('-s, --spa', 'Create new single page application')
+    .description('Creates a new project')
+    .option('-s, --spa', 'Create a new single page application')
     .option('-y, --yarn', 'Use Yarn')
-    .action((name, options) => {
-        const args = [
-            'emakinacee-react',
-            name
-        ];
-        if (options.spa) args.push('--spa');
-        if (options.yarn) args.push('--yarn');
+    .action(generateNewProject);
 
-        spawnSync(join(__dirname, 'node_modules', '.bin', 'yo'), args, {
-            stdio: 'inherit',
-            shell: true
-        });
-    });
-
-// Add command to generate new files.
 program
-    .command('g <type> <name> [module]')
+    .command('generate <type> <name> [module]')
+    .description('Generate a new scaffold')
     .option('-c, --connect', 'Connect Component to Cerebral')
     .option('--class', 'Generate Component in ES6 Class Syntax')
-    .action((type, name, module, options) => {
-        const args = [
-            'emakinacee-react:gen',
-            type,
-            name
-        ];
-        if (module) args.push(module);
-        if (options.connect) args.push('--connect');
-        if (options.class) args.push('--class');
+    .action(generateScaffold);
 
-        spawnSync(join(__dirname, 'node_modules', '.bin', 'yo'), args, {
-            stdio: 'inherit',
-            shell: true
-        });
-    });
+program
+    .command('g <type> <name> [module]')
+    .description('Shorthand for generate')
+    .option('-c, --connect', 'Connect Component to Cerebral')
+    .option('--class', 'Generate Component in ES6 Class Syntax')
+    .action(generateScaffold);
 
 program.parse(process.argv);
 
