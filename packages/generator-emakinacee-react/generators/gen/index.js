@@ -17,6 +17,8 @@ class AppGenerator extends Generator {
 
     /**
      * INITIALIZING
+     *
+     * @returns {undefined}
      */
     initializing() {
         this._module = this.options.module ? changeCase.pascalCase(this.options.module) : null;
@@ -25,6 +27,8 @@ class AppGenerator extends Generator {
 
     /**
      * PROMTING
+     *
+     * @returns {undefined}
      */
     prompting() {
         if (this._moduleDoesNotExist && this._isNestableType()) {
@@ -42,6 +46,8 @@ class AppGenerator extends Generator {
 
     /**
      * DEFAULT
+     *
+     * @returns {undefined}
      */
     default() {
         if (this._createModule) {
@@ -53,7 +59,7 @@ class AppGenerator extends Generator {
         const args = [this.options.name];
         if (this.options.module) args.push(this.options.module);
 
-        switch(this.options.type) {
+        switch (this.options.type) {
             case 'component':
                 this.composeWith(require.resolve('../component'), {
                     arguments: args,
@@ -101,7 +107,7 @@ class AppGenerator extends Generator {
      * IS NESTABLE TYPE
      * Return if the current type can be nested in a module.
      *
-     * @returns {boolean}
+     * @returns {boolean} - if it is nestable in module.
      * @private
      */
     _isNestableType() {

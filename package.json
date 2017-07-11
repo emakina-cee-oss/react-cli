@@ -1,9 +1,8 @@
 {
-  "name": "generator-emakinacee-react",
-  "version": "1.1.0",
+  "name": "emakina-react-cli",
+  "version": "1.0.0",
   "description": "EMAKINA CEE's React CLI",
   "keywords": [
-    "yeoman-generator",
     "emakina",
     "react",
     "cli"
@@ -18,27 +17,28 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/emakina-cee-oss/generator-emakinacee-react"
+    "url": "https://github.com/emakina-cee-oss/react-cli"
   },
   "bugs": {
-    "url": "https://github.com/emakina-cee-oss/generator-emakinacee-react/issues"
+    "url": "https://github.com/emakina-cee-oss/react-cli/issues"
   },
-  "homepage": "https://github.com/emakina-cee-oss/generator-emakinacee-react",
-  "files": [
-    "generators"
-  ],
+  "homepage": "https://github.com/emakina-cee-oss/react-cli",
+  "bin": {
+    "react": "./index.js"
+  },
   "dependencies": {
-    "change-case": "^3.0.1",
-    "yeoman-generator": "^1.1.1"
+    "commander": "2.10.0",
+    "generator-emakinacee-react": "1.1.0",
+    "yo": "2.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.1.1",
-    "eslint-config-emakinacee-base": "^1.1.0",
-    "eslint-config-emakinacee-react": "^0.2.0",
-    "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-jsx-a11y": "^6.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint": "4.1.1",
+    "eslint-config-emakinacee-base": "1.1.0",
+    "eslint-config-emakinacee-react": "1.0.0",
+    "eslint-plugin-import": "2.6.0",
+    "eslint-plugin-jsx-a11y": "6.0.0",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-react": "7.1.0",
+    "eslint-plugin-standard": "3.0.1"
   }
 }

@@ -1,4 +1,3 @@
-const fs = require('fs');
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 
@@ -13,6 +12,8 @@ class AppGenerator extends Generator {
 
     /**
      * WRITING
+     *
+     * @returns {undefined}
      */
     writing() {
         this.log(`Spawning ${this._getName()} ...`);
@@ -20,22 +21,20 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * GET ACTION NAME
-     * Ensures camelCase with 'Action' postfix.
+     * GET NAME
      *
-     * @returns {string}
+     * @returns {string}- valid factory name
      * @private
      */
     _getName() {
-        let nameCamelCase = changeCase.camelCase(this.options.name);
-        return nameCamelCase.endsWith('Compute') ? nameCamelCase : `${nameCamelCase}Compute`
+        const nameCamelCase = changeCase.camelCase(this.options.name);
+        return nameCamelCase.endsWith('Factory') ? nameCamelCase : `${nameCamelCase}Factory`;
     }
 
     /**
-     * GET ACTION NAME
-     * Ensures camelCase with 'Action' postfix.
+     * GET MODULE
      *
-     * @returns {string}
+     * @returns {string} - valid module name
      * @private
      */
     _getModule() {
@@ -44,34 +43,36 @@ class AppGenerator extends Generator {
 
     /**
      * GET PATH
-     * Return path where the action should be spawned.
      *
-     * @returns {string}
+     * @returns {string} - valid path
      * @private
      */
     _getPath() {
-        return (this._getModule()) ? `src/modules/${this._getModule()}/computes` : 'src/shared/computes';
+        return (this._getModule()) ? `src/modules/${this._getModule()}/factories` : 'src/shared/factories';
     }
 
     /**
      * COPY FILES
      *
+     * @returns {undefined}
      * @private
      */
     _copyFiles() {
         this.fs.copyTpl(
-            this.templatePath('compute.txt'),
+            this.templatePath('factory.txt'),
             this.destinationPath(`${this._getPath()}/${this._getName()}.js`),
             {
                 name: this._getName(),
+                nameInner: this._getName().replace('Factory', ''),
                 nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName())),
             }
         );
         this.fs.copyTpl(
-            this.templatePath('compute-test.txt'),
+            this.templatePath('factory-test.txt'),
             this.destinationPath(`${this._getPath()}/${this._getName()}.spec.js`),
             {
                 name: this._getName(),
+                nameInner: this._getName().replace('Factory', ''),
             }
         );
     }

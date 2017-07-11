@@ -13,6 +13,8 @@ class AppGenerator extends Generator {
 
     /**
      * WRITING
+     *
+     * @returns {undefined}
      */
     writing() {
         this.log(`Spawning ${this._getName()} ...`);
@@ -23,23 +25,22 @@ class AppGenerator extends Generator {
 
         if (this.options.connect) {
             templatesToCopy.push('component-connected.txt');
-            templatesToCopy.push('component-connected-test.txt')
+            templatesToCopy.push('component-connected-test.txt');
         } else if (this.options.class) {
             templatesToCopy.push('component-class.txt');
-            templatesToCopy.push('component-test.txt')
+            templatesToCopy.push('component-test.txt');
         } else {
             templatesToCopy.push('component.txt');
-            templatesToCopy.push('component-test.txt')
+            templatesToCopy.push('component-test.txt');
         }
 
         this._copyFiles(templatesToCopy);
     }
 
     /**
-     * GET COMPONENT NAME
-     * Ensures PascalCase.
+     * GET NAME
      *
-     * @returns {string}
+     * @returns {string} - valid component name
      * @private
      */
     _getName() {
@@ -49,7 +50,8 @@ class AppGenerator extends Generator {
     /**
      * COPY FILES
      *
-     * @param templatesToCopy
+     * @param {Array} templatesToCopy - templates to copy
+     * @returns {undefined}
      * @private
      */
     _copyFiles(templatesToCopy) {
