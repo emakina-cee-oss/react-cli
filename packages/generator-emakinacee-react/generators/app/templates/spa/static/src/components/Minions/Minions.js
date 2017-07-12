@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
 import {state, signal} from 'cerebral/tags';
-import './Minions.css';
+import './Minions.scss';
 
 const Minions = ({addMinionClicked, availableMinions}) => {
     return (

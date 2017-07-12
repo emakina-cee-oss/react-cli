@@ -21,7 +21,6 @@
         "xdescribe": false,
         "xit": false,
         "xtest": false,
-
         "fetch": false,
         "URL": false
     }

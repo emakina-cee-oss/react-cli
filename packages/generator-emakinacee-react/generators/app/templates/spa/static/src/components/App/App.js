@@ -4,7 +4,7 @@ import {state} from 'cerebral/tags';
 import Home from '../Home/Home';
 import Minions from '../Minions/Minions';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 const VIEWS = {
     Home,
