@@ -222,7 +222,6 @@ class AppGenerator extends Generator {
             'eslint-plugin-standard',
             'eslint-plugin-react',
             'eslint-plugin-jsx-a11y',
-            'eslint-plugin-prettier',
             'eslint-config-emakinacee-base',
             'eslint-config-emakinacee-react',
             'eslint-config-prettier',

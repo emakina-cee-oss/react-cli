@@ -7,14 +7,6 @@
         "prettier/react"
     ],
 
-    "plugins": [
-        "prettier"
-    ],
-
-    "rules": {
-        "prettier/prettier": "error"
-    },
-
     "globals": {
         "afterAll": false,
         "afterEach": false,
