@@ -1,7 +1,10 @@
 {
     "extends": [
         "emakinacee-base",
-        "emakinacee-react"
+        "emakinacee-react",
+        // Must be last to override rules. https://github.com/prettier/eslint-config-prettier#installation
+        "prettier",
+        "prettier/react"
     ],
 
     "globals": {
