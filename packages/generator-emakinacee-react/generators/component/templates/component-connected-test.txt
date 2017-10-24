@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Container} from 'cerebral/react';
+import { Container } from '@cerebral/react';
 import controller from '../../controller';
 import <%= name %> from './<%= name %>';
 

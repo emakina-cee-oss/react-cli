@@ -1,7 +1,7 @@
 /**
  * <%= nameUpperCase %>
  */
-const <%= name %> = ({props, state}) => {
+const <%= name %> = ({ props, state }) => {
     // Enthusiasm... the sustaining power of all great action.
     // (Samuel Smiles)
 };

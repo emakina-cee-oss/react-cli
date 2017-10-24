@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './<%= name %>.scss';
 
-class <%= name %> extends Component {
+class <%= name %> extends React.Component {
     render() {
         return (
             <div className="c-<%= nameDash %>">
