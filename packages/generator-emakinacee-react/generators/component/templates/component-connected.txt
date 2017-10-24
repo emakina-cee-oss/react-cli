@@ -5,6 +5,7 @@ import './<%= name %>.scss';
 const <%= name %> = () => {
     return (
         <div className="c-<%= nameDash %>">
+            ...
         </div>
     );
 };

@@ -7,7 +7,7 @@ class AppGenerator extends Generator {
         super(args, opts);
 
         this.argument('name', { type: String, required: true });
-        this.option('class');
+        this.option('stateful');
         this.option('connect');
     }
 
@@ -26,8 +26,8 @@ class AppGenerator extends Generator {
         if (this.options.connect) {
             templatesToCopy.push('component-connected.txt');
             templatesToCopy.push('component-connected-test.txt');
-        } else if (this.options.class) {
-            templatesToCopy.push('component-class.txt');
+        } else if (this.options.stateful) {
+            templatesToCopy.push('component-stateful.txt');
             templatesToCopy.push('component-test.txt');
         } else {
             templatesToCopy.push('component.txt');

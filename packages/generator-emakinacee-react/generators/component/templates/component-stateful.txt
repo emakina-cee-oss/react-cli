@@ -5,6 +5,7 @@ class <%= name %> extends React.Component {
     render() {
         return (
             <div className="c-<%= nameDash %>">
+                ...
             </div>
         );
     }
