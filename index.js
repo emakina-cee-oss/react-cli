@@ -16,8 +16,6 @@ const generateNewProject = (name, options) => {
         'emakinacee-react',
         name
     ];
-    if (options.spa) args.push('--spa');
-    if (options.yarn) args.push('--yarn');
 
     spawnSync(join(__dirname, 'node_modules', '.bin', 'yo'), args, {
         stdio: 'inherit',
@@ -56,8 +54,6 @@ program.version(packageInfo.version);
 program
     .command('new <name>')
     .description('Creates a new project')
-    .option('-s, --spa', 'Create a new single page application')
-    .option('-y, --yarn', 'Use Yarn')
     .action(generateNewProject);
 
 program
