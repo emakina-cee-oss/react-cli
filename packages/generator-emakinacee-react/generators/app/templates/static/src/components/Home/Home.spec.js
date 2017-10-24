@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Container} from 'cerebral/react';
+import { Container } from '@cerebral/react';
 import controller from '../../controller';
-import Minions from './Minions';
+import Home from './Home';
 
-it('renders without error', () => {
+it('renders without crashing', () => {
     const div = document.createElement('div');
 
     ReactDOM.render(
         <Container controller={controller} >
-            <Minions />
+            <Home />
         </Container>,
         div
     );

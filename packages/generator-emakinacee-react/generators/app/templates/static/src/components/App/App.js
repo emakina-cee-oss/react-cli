@@ -1,4 +1,5 @@
 import React from 'react';
+import Home from '../Home/Home';
 import logo from './logo.svg';
 import './App.scss';
 
@@ -9,9 +10,8 @@ const App = () => {
                 <img src={logo} className="c-app__logo" alt="logo" />
                 <h2>Welcome to React</h2>
             </div>
-            <p className="c-app__intro">
-                To get started, edit <code>src/App.js</code> and save to reload.
-            </p>
+
+            <Home />
         </div>
     );
 };
