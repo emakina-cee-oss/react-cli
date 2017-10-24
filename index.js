@@ -40,7 +40,7 @@ const generateScaffold = (type, name, module, options) => {
     ];
     if (module) args.push(module);
     if (options.connect) args.push('--connect');
-    if (options.class) args.push('--class');
+    if (options.stateful) args.push('--stateful');
 
     spawnSync(join(__dirname, 'node_modules', '.bin', 'yo'), args, {
         stdio: 'inherit',
@@ -60,14 +60,14 @@ program
     .command('generate <type> <name> [module]')
     .description('Generate a new scaffold')
     .option('-c, --connect', 'Connect Component to Cerebral')
-    .option('--class', 'Generate Component in ES6 Class Syntax')
+    .option('-s --stateful', 'Generate Stateful Component')
     .action(generateScaffold);
 
 program
     .command('g <type> <name> [module]')
     .description('Shorthand for generate')
     .option('-c, --connect', 'Connect Component to Cerebral')
-    .option('--class', 'Generate Component in ES6 Class Syntax')
+    .option('-s --stateful', 'Generate Stateful Component')
     .action(generateScaffold);
 
 program.parse(process.argv);
