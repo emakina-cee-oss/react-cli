@@ -1,5 +1,8 @@
 import <%= name %> from './<%= name %>';
 
-it('<%= name %> is defined', () => {
-    expect(new <%= name %>()).toBeInstanceOf(<%= name %>);
+describe('<%= name %>', () => {
+
+    it('<%= name %> is defined', () => {
+        expect(new <%= name %>()).toBeInstanceOf(<%= name %>);
+    });
 });

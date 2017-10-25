@@ -6,25 +6,9 @@
         "prettier",
         "prettier/react"
     ],
-
+    "env": {
+        "jest": true
+    },
     "globals": {
-        "afterAll": false,
-        "afterEach": false,
-        "beforeAll": false,
-        "beforeEach": false,
-        "describe": false,
-        "expect": false,
-        "fit": false,
-        "it": false,
-        "jasmine": false,
-        "jest": false,
-        "pit": false,
-        "require": false,
-        "test": false,
-        "xdescribe": false,
-        "xit": false,
-        "xtest": false,
-        "fetch": false,
-        "URL": false
     }
 }
