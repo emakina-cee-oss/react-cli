@@ -140,6 +140,7 @@ Scaffold  | Usage
 [Component](https://github.com/emakina-cee-oss/react-cli/wiki) | `react g component AwesomeComponent`
 [Module](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g module AwesomeModule`
 [Service](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g service AwesomeService`
+[Signal](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g action awesomeSignal SomeModule`
 [Action](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g action awesomeAction SomeModule`
 [Factory](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g factory awesomeFactory SomeModule`
 [Compute](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g compute awesomeCompute SomeModule`
@@ -175,14 +176,21 @@ Spawns the following Files:
 + `src/modules/Awesome/AwesomeModule.js`
 + `src/modules/Awesome/AwesomeModule.spec.js`
 
+### Signal
+```sh
+react g signal awesomeSignal SomeModule
+```
+If the module is omitted the signal will be created in the shared folder.
+
+Spawns the following Files:
++ `src/modules/SomeModule/signals/awesomeSignal.js`
++ `src/modules/SomeModule/signals/awesomeSignal.spec.js`
+
 ### Action
 ```sh
 react g action awesomeAction SomeModule
 ```
 If the module is omitted the action will be created in the shared folder.
-
-If there is a module given which does not yet exist you will be asked to create
-the module right away.
 
 Spawns the following Files:
 + `src/modules/SomeModule/actions/awesomeAction.js`
@@ -192,10 +200,7 @@ Spawns the following Files:
 ```sh
 react g factory awesomeFunctionFactory SomeModule
 ```
-If the module is omitted the action will be created in the shared folder.
-
-If there is a module given which does not yet exist you will be asked to create
-the module right away.
+If the module is omitted the factory will be created in the shared folder.
 
 Spawns the following Files:
 + `src/modules/SomeModule/factory/awesomeFunctionFactory.js`
@@ -205,10 +210,7 @@ Spawns the following Files:
 ```sh
 react g compute awesomeCompute SomeModule
 ```
-If the module is omitted the action will be created in the shared folder.
-
-If there is a module given which does not yet exist you will be asked to create
-the module right away.
+If the module is omitted the compute will be created in the shared folder.
 
 Spawns the following Files:
 + `src/modules/SomeModule/computes/awesomeCompute.js`
