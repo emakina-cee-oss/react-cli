@@ -86,6 +86,12 @@ class AppGenerator extends Generator {
                 });
                 break;
 
+            case 'signal':
+                this.composeWith(require.resolve('../signal'), {
+                    arguments: args
+                });
+                break;
+
             case 'factory':
                 this.composeWith(require.resolve('../factory'), {
                     arguments: args
