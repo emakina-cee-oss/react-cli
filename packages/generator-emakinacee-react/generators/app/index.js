@@ -175,7 +175,10 @@ class AppGenerator extends Generator {
             'eslint-config-emakinacee-react',
             'eslint-config-prettier',
             'prettier',
-            'react-scripts-emakinacee',
+            'react-scripts',
+            'react-app-rewired',
+            'node-sass',
+            'sass-loader',
             'serve'
         ];
 

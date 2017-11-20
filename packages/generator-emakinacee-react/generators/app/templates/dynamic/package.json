@@ -4,11 +4,11 @@
   "private": true,
   "description": "",
   "scripts": {
-    "start": "react-scripts-emakinacee start",
-    "build": "react-scripts-emakinacee build",
-    "test": "react-scripts-emakinacee test --env=jsdom",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "serve:build": "serve ./build",
-    "eject": "react-scripts-emakinacee eject",
+    "eject": "react-scripts eject",
     "prettier": "prettier --write --tab-width 4 --single-quote --trailing-comma all \"src/**/*.js\""
   }
 }
