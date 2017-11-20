@@ -1,6 +1,11 @@
 import React from 'react';
 import './<%= name %>.scss';
 
+/**
+ * <%= nameUpperCase %>
+ *
+ * @returns {XML} -
+ */
 const <%= name %> = () => {
     return (
         <div className="c-<%= nameDash %>">

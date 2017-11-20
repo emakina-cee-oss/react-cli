@@ -3,6 +3,11 @@ import { connect } from '@cerebral/react';
 import { state } from 'cerebral/tags';
 import './Home.scss';
 
+/**
+ * HOME
+ *
+ * @returns {XML} -
+ */
 const Home = ({ title }) => {
     return (
         <div className="c-home">

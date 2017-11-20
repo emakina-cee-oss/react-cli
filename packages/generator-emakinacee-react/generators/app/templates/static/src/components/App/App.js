@@ -3,6 +3,11 @@ import Home from '../Home/Home';
 import logo from './logo.svg';
 import './App.scss';
 
+/**
+ * APP
+ *
+ * @returns {XML} -
+ */
 const App = () => {
     return (
         <div className="c-app">

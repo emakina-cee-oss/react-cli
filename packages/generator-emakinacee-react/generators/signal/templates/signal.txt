@@ -1,6 +1,5 @@
 /**
  * <%= nameUpperCase %>
  */
-
 export default [
 ];

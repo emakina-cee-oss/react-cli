@@ -1,7 +1,18 @@
 import React from 'react';
 import './<%= name %>.scss';
 
+/**
+ * <%= nameUpperCase %>
+ */
 class <%= name %> extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+        };
+    }
+
     render() {
         return (
             <div className="c-<%= nameDash %>">

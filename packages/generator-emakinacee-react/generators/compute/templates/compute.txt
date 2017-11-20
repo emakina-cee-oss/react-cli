@@ -1,12 +1,14 @@
 import { compute } from 'cerebral';
+import { state } from 'cerebral/tags'
 
 /**
  * <%= nameUpperCase %>
  */
-const <%= name %> = compute(() => {
-    // Do not compute the totality of your poultry population
-    // until all the manifestations of incubation have been entirely completed.
-    // (William Jennings Bryan)
-});
+const <%= name %> = compute(
+    state`foo`,
+    (foo) => {
+        return `${foo}bar`;
+    }
+);
 
 export default <%= name %>;

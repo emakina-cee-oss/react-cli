@@ -65,7 +65,8 @@ class AppGenerator extends Generator {
                 this.destinationPath(`src/components/${this._getName()}/${this._getName()}.${fileEnding}`),
                 {
                     name: this._getName(),
-                    nameDash: changeCase.paramCase(this._getName())
+                    nameDash: changeCase.paramCase(this._getName()),
+                    nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName())),
                 }
             );
         });
