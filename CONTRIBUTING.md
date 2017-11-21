@@ -42,3 +42,21 @@ the correct label.
 Prefix commit messages with a package description it belongs to like follows:
 * `[react-cli] change something`
 * `[generator-emakinacee-react] change something`
+
+
+## Dev / Test Setup
+To work on the react-cli you should clone/fork the repo 
+and checkout the desired branch (well, hello captain obvious).
+
+In addition to that you also have to link the npm dependencies correctly.
+
+1. Navigate to `./packages/generator-emakinacee-react`
+2. Run `npm link`
+3. Navigate back to the projects root folder
+4. Run `npm link generator-emakinacee-react`
+5. Run `npm link`
+
+Now you should be able to run the react-cli commands on your console.
+
+As soon as you change the code of either the generator or the cli package
+you can test it on the console by running the related task.

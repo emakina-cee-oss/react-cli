@@ -7,7 +7,10 @@ The EMAKINA React CLI is built on top of react-scripts used by
 This way you can utilize all the awesome features of create-react-app.
 
 In addition you have access to some even more awesome features like
-[File Generators](https://github.com/emakina-cee-oss/react-cli#file-generators).
++ [File Generators](https://github.com/emakina-cee-oss/react-cli#file-generators)
++ Built in SCSS Support
++ Flexible ESLint Configuration via .eslintrc file
++ State and Side Effects Management done easy with [CerebralJS](https://cerebraljs.com/)
 
 
 ## Getting started
@@ -23,14 +26,7 @@ react new <projectName>
 ```
 
 The command above will bootstrap a new project in a new directory relative to the path you are in.
-Without any option the [Basic Setup](https://github.com/emakina-cee-oss/react-cli#basic-setup)
-will be used.
 
-To bootstrap a new project ready to build a Single Page Application you can enable the 
-[SPA Setup](https://github.com/emakina-cee-oss/react-cli#spa-setup) 
-by adding the option flag `--spa` 
-
-To use [Yarn](https://yarnpkg.com/en/) in addition to NPM simply add the option flag `--yarn`.
 
 ### 3. Take off
 ```sh
@@ -40,16 +36,6 @@ npm start
 
 > Also have a look to the [Create React App](https://github.com/facebookincubator/create-react-app) 
 documentation for more information.
-
-
-## Basic Setup
-The basic setup simply provides a ready to go project structure for React
-without any fancy additions.
-
-
-## SPA Setup
-For Single Page Applications [Cerebral](http://cerebraljs.com/docs/introduction/) 
-is added to the stack to provide route, state management etc.
 
 
 ## Project Structure
@@ -63,9 +49,9 @@ The `shared` folder is for code which is shared and can be consumed from many co
 parts of the app.
 Like services and helper functions etc.
 
-As Cerebral is used for the SPA-Setup the `modules` folder is introduced to split Cerebral's signals
-and state into modules. Therefore each module has it's own folder which contains actions, computes,
-and factories. If there are e.g. actions used in multiple modules those are moved to the `shared` 
+As Cerebral is used for state and side effects management the `modules` folder is introduced 
+to split Cerebral's state into modules. Therefore each module has it's own folder which contains signals, actions, computes,
+and so on. If there are e.g. actions used in multiple modules those are moved to the `shared` 
 folder.
 
 ```
@@ -82,6 +68,9 @@ folder.
                 |-logo.svg
     |-modules 
         |-App
+            |-signals
+                |-exampleSignal.js
+                |-exampleSignal.spec.js
             |-actions
                 |-exampleAction.js
                 |-exampleAction.spec.js
@@ -94,6 +83,9 @@ folder.
             |-AppModule.js
             |-AppModule.spec.js
     |-shared
+        |-signals
+            |-exampleSignal.js
+            |-exampleSignal.spec.js
         |-actions
             |-exampleAction.js
             |-exampleAction.spec.js
@@ -118,9 +110,7 @@ folder.
 ## Styles (SCSS)
 By default the support for SCSS is enabled and we recommend to use it.
 
-Just add a .scss instead of a .css file for your components.
-The SCSS files are watched and compiles to a CSS file right next to it.
-As components still import the CSS all the styles will be part of the application.
+Just import a .scss file into your component and Webpack will do the job.
 
 ### Variables and Tools
 Variables, Settings and tools which can be used by all components are placed in `./src/scss`.
@@ -145,24 +135,35 @@ react g <scaffold> <name> [module]
 ```
 
 
-Scaffold  | Usage
----       | ---
-[Component](https://github.com/emakina-cee-oss/react-cli/wiki) | `react g component AwesomeComponent`
-[Module](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g module AwesomeModule`
-[Service](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g service AwesomeService`
-[Action](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g action awesomeAction SomeModule`
-[Factory](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g factory awesomeFactory SomeModule`
-[Compute](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g compute awesomeCompute SomeModule`
+Scaffold                                                        | Usage
+---                                                             | ---
+[Component](https://github.com/emakina-cee-oss/react-cli/wiki)  | `react g component <AwesomeComponent>`
+[Module](https://github.com/emakina-cee-oss/react-cli/wiki)     | `react g module <AwesomeModule>`
+[Service](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g service <AwesomeService>`
+[Signal](https://github.com/emakina-cee-oss/react-cli/wiki)     | `react g signal <awesomeSignal> [<ModuleName>]`
+[Action](https://github.com/emakina-cee-oss/react-cli/wiki)     | `react g action <awesomeAction> [<ModuleName>]`
+[Factory](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g factory <awesomeFactory> [<ModuleName>]`
+[Compute](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g compute <awesomeCompute> [<ModuleName>]`
+
+If the `ModuleName` is given the signal, action, compute etc. are placed in the folder
+of the desired module. 
+If the `ModuleName` is omitted the files will be created in the shared folder.
 
 See the following examples for more detail.
+
+### Some Comfy Convenience
+As the CLI's main intend is to help you save time while being consistent,
+it is built to only write the necessary things.
+
+So `react g signal foo bar` will still generate `fooSignal` in the module folder `Bar`.
 
 ### Component
 ```sh
 react g component ComponentName
 ```
 _Options_
-+ --connect (Connect the Component to the Cerebral Controller)
-+ --class (Generate a Component in ES6 Class Syntax)
++ `-c` or `--connect` (Connect a Component to Cerebral)
++ `-s` or `--stateful` (Generate a Stateful Component)
 
 Spawns the following Files:
 + `src/components/ComponentName/ComponentName.js`
@@ -185,14 +186,21 @@ Spawns the following Files:
 + `src/modules/Awesome/AwesomeModule.js`
 + `src/modules/Awesome/AwesomeModule.spec.js`
 
+### Signal
+```sh
+react g signal awesomeSignal SomeModule
+```
+If the module is omitted the signal will be created in the shared folder.
+
+Spawns the following Files:
++ `src/modules/SomeModule/signals/awesomeSignal.js`
++ `src/modules/SomeModule/signals/awesomeSignal.spec.js`
+
 ### Action
 ```sh
 react g action awesomeAction SomeModule
 ```
 If the module is omitted the action will be created in the shared folder.
-
-If there is a module given which does not yet exist you will be asked to create
-the module right away.
 
 Spawns the following Files:
 + `src/modules/SomeModule/actions/awesomeAction.js`
@@ -202,10 +210,7 @@ Spawns the following Files:
 ```sh
 react g factory awesomeFunctionFactory SomeModule
 ```
-If the module is omitted the action will be created in the shared folder.
-
-If there is a module given which does not yet exist you will be asked to create
-the module right away.
+If the module is omitted the factory will be created in the shared folder.
 
 Spawns the following Files:
 + `src/modules/SomeModule/factory/awesomeFunctionFactory.js`
@@ -215,10 +220,7 @@ Spawns the following Files:
 ```sh
 react g compute awesomeCompute SomeModule
 ```
-If the module is omitted the action will be created in the shared folder.
-
-If there is a module given which does not yet exist you will be asked to create
-the module right away.
+If the module is omitted the compute will be created in the shared folder.
 
 Spawns the following Files:
 + `src/modules/SomeModule/computes/awesomeCompute.js`

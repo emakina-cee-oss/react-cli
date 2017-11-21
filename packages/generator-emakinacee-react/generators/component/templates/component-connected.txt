@@ -1,13 +1,21 @@
 import React from 'react';
-import {connect} from 'cerebral/react';
+import { connect } from '@cerebral/react';
 import './<%= name %>.scss';
 
+/**
+ * <%= nameUpperCase %>
+ *
+ * @returns {XML} -
+ */
 const <%= name %> = () => {
     return (
         <div className="c-<%= nameDash %>">
+            ...
         </div>
     );
 };
 
-export default connect({
-}, <%= name %>);
+export default connect(
+    {},
+    <%= name %>
+);

@@ -1,5 +1,9 @@
 import <%= nameInner %> from './<%= name %>';
 
-it('<%= name %> is a function returning a function', () => {
-    expect(<%= nameInner %>()).toBeInstanceOf(Function);
+
+describe('<%= name %>', () => {
+
+    it('<%= name %> is a function returning a function', () => {
+        expect(<%= nameInner %>()).toBeInstanceOf(Function);
+    });
 });

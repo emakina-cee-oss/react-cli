@@ -31,26 +31,23 @@ class AppGenerator extends Generator {
     prompting() {
         const prompts = [];
 
-        if (this.options.spa) {
-            prompts.push({
-                type: 'input',
-                name: 'appName',
-                message: 'The name of your app used in the manifest',
-                default: this.options.projectName
-            });
-            prompts.push({
-                type: 'input',
-                name: 'appNameShort',
-                message: 'A short name for use as the text on the users home screen',
-                default: this.options.projectName
-            });
-        }
+        prompts.push({
+            type: 'input',
+            name: 'appName',
+            message: 'Manifest Name',
+            default: this.options.projectName
+        });
+
+        prompts.push({
+            type: 'input',
+            name: 'appNameShort',
+            message: 'Manifest Short Name',
+            default: this.options.projectName
+        });
 
         return this.prompt(prompts).then((answers) => {
-            if (this.options.spa) {
-                this._appName = answers.appName;
-                this._appNameShort = answers.appNameShort;
-            }
+            this._appName = answers.appName;
+            this._appNameShort = answers.appNameShort;
         });
     }
 
@@ -61,7 +58,7 @@ class AppGenerator extends Generator {
      */
     configuring() {
         this.log('2. Spawn dot files ...');
-        this._copyStaticFiles('shared/dot');
+        this._copyStaticFiles('dot');
     }
 
     /**
@@ -71,13 +68,24 @@ class AppGenerator extends Generator {
      */
     writing() {
         this.log('3. Spawn initial project files ...');
-        this._copySharedFiles();
+        this._copyStaticFiles('static');
 
-        if (this.options.spa) {
-            this._copySpaFiles();
-        } else {
-            this._copyBaseFiles();
-        }
+        this.fs.copyTpl(
+            this.templatePath('dynamic/package.json'),
+            this.destinationPath('package.json'),
+            {
+                projectName: this.options.projectName
+            }
+        );
+
+        this.fs.copyTpl(
+            this.templatePath('dynamic/manifest.json'),
+            this.destinationPath('public/manifest.json'),
+            {
+                appName: this._appName,
+                appNameShort: this._appNameShort
+            }
+        );
     }
 
     /**
@@ -111,58 +119,6 @@ class AppGenerator extends Generator {
         this.destinationRoot(this.destinationPath(this.options.projectName));
     }
 
-    _copySharedFiles() {
-        this._copyStaticFiles('shared/static');
-    }
-
-    /**
-     * COPY BASE FILES
-     *
-     * @returns {undefined}
-     * @private
-     */
-    _copyBaseFiles() {
-        this._copyStaticFiles('base/static');
-
-        // Dynamic Templates
-        this.fs.copyTpl(
-            this.templatePath('base/dynamic/package.json'),
-            this.destinationPath('package.json'),
-            {
-                projectName: this.options.projectName
-            }
-        );
-    }
-
-    /**
-     * COPY SPA FILES
-     * Files only needed for Single Page Applications
-     *
-     * @returns {undefined}
-     * @private
-     */
-    _copySpaFiles() {
-        this._copyStaticFiles('spa/static');
-
-        // Dynamic Templates
-        this.fs.copyTpl(
-            this.templatePath('spa/dynamic/package.json'),
-            this.destinationPath('package.json'),
-            {
-                projectName: this.options.projectName
-            }
-        );
-
-        this.fs.copyTpl(
-            this.templatePath('spa/dynamic/manifest.json'),
-            this.destinationPath('public/manifest.json'),
-            {
-                appName: this._appName,
-                appNameShort: this._appNameShort
-            }
-        );
-    }
-
     /**
      * COPY STATIC TEMPLATES
      *
@@ -193,19 +149,12 @@ class AppGenerator extends Generator {
         const dependencies = [
             'react',
             'react-dom',
+            'cerebral',
+            '@cerebral/react',
             'sass-mq'
         ];
 
-        if (this.options.spa) {
-            dependencies.push('cerebral@beta');
-            dependencies.push('@cerebral/router');
-        }
-
-        if (this.options.yarn) {
-            this.yarnInstall(dependencies);
-        } else {
-            this.npmInstall(dependencies, { 'save': true });
-        }
+        this.npmInstall(dependencies, { 'save': true });
     }
 
     /**
@@ -226,15 +175,14 @@ class AppGenerator extends Generator {
             'eslint-config-emakinacee-react',
             'eslint-config-prettier',
             'prettier',
-            'react-scripts-emakinacee',
+            'react-scripts',
+            'react-app-rewired',
+            'node-sass',
+            'sass-loader',
             'serve'
         ];
 
-        if (this.options.yarn) {
-            this.yarnInstall(devDependencies, { 'dev': true });
-        } else {
-            this.npmInstall(devDependencies, { 'save-dev': true });
-        }
+        this.npmInstall(devDependencies, { 'save-dev': true });
     }
 };
 

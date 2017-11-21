@@ -1,9 +1,9 @@
 /**
  * <%= nameUpperCase %>
+ *
+ * @returns {undefined}
  */
-const <%= name %> = ({props, state}) => {
+export default ({ props, state }) => {
     // Enthusiasm... the sustaining power of all great action.
     // (Samuel Smiles)
 };
-
-export default <%= name %>;

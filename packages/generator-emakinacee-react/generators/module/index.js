@@ -48,9 +48,12 @@ class AppGenerator extends Generator {
      * @private
      */
     _copyFiles() {
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('module.txt'),
-            this.destinationPath(`src/modules/${this._getNameShort()}/${this._getName()}.js`)
+            this.destinationPath(`src/modules/${this._getNameShort()}/${this._getName()}.js`),
+            {
+                nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName())),
+            }
         );
         this.fs.copyTpl(
             this.templatePath('module-test.txt'),

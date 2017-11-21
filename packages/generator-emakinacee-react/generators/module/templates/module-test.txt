@@ -1,6 +1,9 @@
 import <%= name %> from './<%= name %>';
 
-it('<%= name %> exports object with state and signals', () => {
-    expect(<%= name %>).toHaveProperty('state');
-    expect(<%= name %>).toHaveProperty('signals');
+describe('<%= name %>', () => {
+
+    it('<%= name %> exports object with state and signals', () => {
+        expect(<%= name %>).toHaveProperty('state');
+        expect(<%= name %>).toHaveProperty('signals');
+    });
 });

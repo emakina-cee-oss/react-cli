@@ -11,7 +11,7 @@ class AppGenerator extends Generator {
         this.argument('name', { type: String, required: true });
         this.argument('module', { type: String, required: false });
 
-        this.option('class');
+        this.option('stateful');
         this.option('connect');
     }
 
@@ -63,7 +63,7 @@ class AppGenerator extends Generator {
             case 'component':
                 this.composeWith(require.resolve('../component'), {
                     arguments: args,
-                    class: this.options.class,
+                    stateful: this.options.stateful,
                     connect: this.options.connect
                 });
                 break;
@@ -82,6 +82,12 @@ class AppGenerator extends Generator {
 
             case 'action':
                 this.composeWith(require.resolve('../action'), {
+                    arguments: args
+                });
+                break;
+
+            case 'signal':
+                this.composeWith(require.resolve('../signal'), {
                     arguments: args
                 });
                 break;
