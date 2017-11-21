@@ -135,17 +135,27 @@ react g <scaffold> <name> [module]
 ```
 
 
-Scaffold  | Usage
----       | ---
-[Component](https://github.com/emakina-cee-oss/react-cli/wiki) | `react g component AwesomeComponent`
-[Module](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g module AwesomeModule`
-[Service](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g service AwesomeService`
-[Signal](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g action awesomeSignal SomeModule`
-[Action](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g action awesomeAction SomeModule`
-[Factory](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g factory awesomeFactory SomeModule`
-[Compute](https://github.com/emakina-cee-oss/react-cli/wiki)   | `react g compute awesomeCompute SomeModule`
+Scaffold                                                        | Usage
+---                                                             | ---
+[Component](https://github.com/emakina-cee-oss/react-cli/wiki)  | `react g component <AwesomeComponent>`
+[Module](https://github.com/emakina-cee-oss/react-cli/wiki)     | `react g module <AwesomeModule>`
+[Service](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g service <AwesomeService>`
+[Signal](https://github.com/emakina-cee-oss/react-cli/wiki)     | `react g signal <awesomeSignal> [<ModuleName>]`
+[Action](https://github.com/emakina-cee-oss/react-cli/wiki)     | `react g action <awesomeAction> [<ModuleName>]`
+[Factory](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g factory <awesomeFactory> [<ModuleName>]`
+[Compute](https://github.com/emakina-cee-oss/react-cli/wiki)    | `react g compute <awesomeCompute> [<ModuleName>]`
+
+If the `ModuleName` is given the signal, action, compute etc. are placed in the folder
+of the desired module. 
+If the `ModuleName` is omitted the files will be created in the shared folder.
 
 See the following examples for more detail.
+
+### Some Comfy Convenience
+As the CLI's main intend is to help you save time while being consistent,
+it is built to only write the necessary things.
+
+So `react g signal foo bar` will still generate `fooSignal` in the module folder `Bar`.
 
 ### Component
 ```sh
