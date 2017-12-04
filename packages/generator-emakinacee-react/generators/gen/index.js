@@ -26,7 +26,7 @@ class AppGenerator extends Generator {
     }
 
     /**
-     * PROMTING
+     * PROMPTING
      *
      * @returns {undefined}
      */
