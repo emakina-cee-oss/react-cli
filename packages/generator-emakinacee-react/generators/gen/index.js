@@ -117,7 +117,7 @@ class AppGenerator extends Generator {
      * @private
      */
     _isNestableType() {
-        const nestableTypes = ['action', 'factory', 'compute'];
+        const nestableTypes = ['action', 'factory', 'compute', 'signal'];
         return nestableTypes.indexOf(this.options.type) > -1;
     }
 };
