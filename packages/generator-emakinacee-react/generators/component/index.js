@@ -6,7 +6,7 @@ class AppGenerator extends Generator {
     constructor(args, opts) {
         super(args, opts);
 
-        this.argument('name', { type: String, required: true });
+        this.argument('path', { type: String, required: true });
         this.option('stateful');
         this.option('connect');
     }
@@ -17,7 +17,8 @@ class AppGenerator extends Generator {
      * @returns {undefined}
      */
     writing() {
-        this.log(`Spawning ${this._getName()} ...`);
+        const pathOptions = this._getPathOptions();
+        this.log(`Spawning ${pathOptions.componentName} Component ...`);
 
         const templatesToCopy = [
             'component-scss.txt'
@@ -34,27 +35,48 @@ class AppGenerator extends Generator {
             templatesToCopy.push('component-test.txt');
         }
 
-        this._copyFiles(templatesToCopy);
+        this._copyFiles(templatesToCopy, pathOptions);
+    }
+
+    _getPathOptions() {
+        const pathOptions = {};
+        const split = this.options.path.split('/');
+
+        if (split[0] === '') split.shift();
+        if (split[0] === '.') {
+            pathOptions.noDefaultFolder = true;
+            split.shift();
+        }
+        pathOptions.componentName = this._getName(split.pop());
+        pathOptions.path = split.join('/');
+
+        return pathOptions;
     }
 
     /**
      * GET NAME
      *
+     * @param {String} name -
      * @returns {string} - valid component name
      * @private
      */
-    _getName() {
-        return changeCase.pascalCase(this.options.name);
+    _getName(name) {
+        return changeCase.pascalCase(name);
     }
 
     /**
      * COPY FILES
      *
      * @param {Array} templatesToCopy - templates to copy
+     * @param {Object} pathOptions - options to change where the files should be spawned
      * @returns {undefined}
      * @private
      */
-    _copyFiles(templatesToCopy) {
+    _copyFiles(templatesToCopy, pathOptions) {
+        const path = pathOptions.noDefaultFolder
+            ? `src/${pathOptions.path}/${pathOptions.componentName}/${pathOptions.componentName}`
+            : `src/components/${pathOptions.path}/${pathOptions.componentName}/${pathOptions.componentName}`;
+
         templatesToCopy.forEach((template) => {
             let fileEnding = 'js';
             if (template.includes('test')) fileEnding = 'spec.js';
@@ -62,11 +84,11 @@ class AppGenerator extends Generator {
 
             this.fs.copyTpl(
                 this.templatePath(template),
-                this.destinationPath(`src/components/${this._getName()}/${this._getName()}.${fileEnding}`),
+                this.destinationPath(`${path}.${fileEnding}`),
                 {
-                    name: this._getName(),
-                    nameDash: changeCase.paramCase(this._getName()),
-                    nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName())),
+                    name: pathOptions.componentName,
+                    nameDash: changeCase.paramCase(pathOptions.componentName),
+                    nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(pathOptions.componentName)),
                 }
             );
         });
