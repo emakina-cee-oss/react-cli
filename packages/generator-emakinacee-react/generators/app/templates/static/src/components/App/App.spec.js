@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Container } from '@cerebral/react';
 import App from './App';
+import controller from '../../controller';
 
-it('renders without crashing', () => {
-    const div = document.createElement('div');
+describe('App', () => {
 
-    ReactDOM.render(<App />, div);
+    it('renders without crashing', () => {
+        ReactDOM.render(
+            <Container controller={controller} >
+                <App />
+            </Container>,
+            document.createElement('div')
+        );
+    });
 });

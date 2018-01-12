@@ -4,13 +4,14 @@ import { Container } from '@cerebral/react';
 import controller from '../../controller';
 import Home from './Home';
 
-it('renders without crashing', () => {
-    const div = document.createElement('div');
+describe('Home', () => {
 
-    ReactDOM.render(
-        <Container controller={controller} >
-            <Home />
-        </Container>,
-        div
-    );
+    it('renders without crashing', () => {
+        ReactDOM.render(
+            <Container controller={controller} >
+                <Home />
+            </Container>,
+            document.createElement('div')
+        );
+    });
 });
