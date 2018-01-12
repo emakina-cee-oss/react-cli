@@ -55,13 +55,6 @@ class AppGenerator extends Generator {
                 nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName())),
             }
         );
-        this.fs.copyTpl(
-            this.templatePath('module-test.txt'),
-            this.destinationPath(`src/modules/${this._getNameShort()}/${this._getName()}.spec.js`),
-            {
-                name: this._getName(),
-            }
-        );
     }
 };
 

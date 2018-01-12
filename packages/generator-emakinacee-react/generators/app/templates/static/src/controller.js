@@ -1,16 +1,12 @@
 import { Controller } from 'cerebral';
 import Devtools from 'cerebral/devtools';
-import AppModule from './modules/App/AppModule';
+import RootModule from './modules/Root/RootModule';
 
-const controller = Controller({
+const controller = Controller(RootModule, {
     devtools: process.env.NODE_ENV !== 'development' ? null : Devtools({
         host: 'localhost:8585',
         reconnect: true
     }),
-
-    modules: {
-        app: AppModule,
-    }
 });
 
 export default controller;
