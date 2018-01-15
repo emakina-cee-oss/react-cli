@@ -1,6 +1,6 @@
 {
   "name": "emakina-react-cli",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "EMAKINA CEE's React CLI",
   "keywords": [
     "emakina",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "commander": "2.13.0",
-    "generator-emakinacee-react": "3.0.1",
+    "generator-emakinacee-react": "3.0.2",
     "yo": "2.0.0"
   },
   "devDependencies": {

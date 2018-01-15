@@ -58,7 +58,8 @@ class AppGenerator extends Generator {
      */
     configuring() {
         this.log('2. Spawn dot files ...');
-        this._copyStaticFiles('dot');
+        this._copyStaticFiles('dot/static');
+        this._copyGitIgnore();
     }
 
     /**
@@ -137,6 +138,19 @@ class AppGenerator extends Generator {
                 );
             });
         });
+    }
+
+    /**
+     * COPY GITIGNORE FILE
+     *
+     * @returns {undefined}
+     * @private
+     */
+    _copyGitIgnore() {
+        this.fs.copyTpl(
+            this.templatePath('dot/gitignoreTemplate.txt'),
+            this.destinationPath('.gitignore')
+        );
     }
 
     /**
