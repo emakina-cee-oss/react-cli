@@ -147,11 +147,11 @@ class AppGenerator extends Generator {
      */
     _packagesInstall() {
         const dependencies = [
-            'react',
-            'react-dom',
-            'cerebral',
-            '@cerebral/react',
-            'sass-mq'
+            'react@16',
+            'react-dom@16',
+            'cerebral@4',
+            '@cerebral/react@3',
+            'sass-mq@4'
         ];
 
         this.npmInstall(dependencies, { 'save': true });
@@ -165,21 +165,21 @@ class AppGenerator extends Generator {
      */
     _devPackagesInstall() {
         const devDependencies = [
-            'eslint',
-            'eslint-plugin-import',
-            'eslint-plugin-promise',
-            'eslint-plugin-standard',
-            'eslint-plugin-react',
-            'eslint-plugin-jsx-a11y',
-            'eslint-config-emakinacee-base',
-            'eslint-config-emakinacee-react',
-            'eslint-config-prettier',
-            'prettier',
-            'react-scripts',
-            'react-app-rewired',
-            'node-sass',
-            'sass-loader',
-            'serve'
+            'eslint@4',
+            'eslint-plugin-import@2',
+            'eslint-plugin-promise@3',
+            'eslint-plugin-standard@3',
+            'eslint-plugin-react@7',
+            'eslint-plugin-jsx-a11y@6',
+            'eslint-config-emakinacee-base@1',
+            'eslint-config-emakinacee-react@2',
+            'eslint-config-prettier@2',
+            'prettier@1',
+            'react-scripts@1',
+            'react-app-rewired@1',
+            'node-sass@4',
+            'sass-loader@6',
+            'serve@6'
         ];
 
         this.npmInstall(devDependencies, { 'save-dev': true });
