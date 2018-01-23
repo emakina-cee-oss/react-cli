@@ -7,7 +7,7 @@
         "import/no-nodejs-modules": 0
     },
 
-    "globals": {
-        "require": true
+    "env": {
+        "node": true
     }
 }
