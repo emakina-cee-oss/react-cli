@@ -1,6 +1,6 @@
 {
     "extends": [
-        "./packages/generator-emakinacee-react/generators/app/templates/dot/.eslintrc"
+        "./packages/generator-emakinacee-react/generators/app/templates/dot/static/.eslintrc"
     ],
 
     "rules": {
