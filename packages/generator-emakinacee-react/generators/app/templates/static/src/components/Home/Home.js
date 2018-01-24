@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from '@cerebral/react';
 import { state } from 'cerebral/tags';
-import styles from './Home.scss';
+import styles from './Home.module.scss';
 
 /**
  * HOME
