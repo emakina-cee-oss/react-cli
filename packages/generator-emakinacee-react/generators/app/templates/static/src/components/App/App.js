@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from '../Home/Home';
 import logo from './logo.svg';
-import './App.scss';
+import styles from './App.module.scss';
 
 /**
  * APP
@@ -10,9 +10,9 @@ import './App.scss';
  */
 const App = () => {
     return (
-        <div className="c-app">
-            <div className="c-app__header">
-                <img src={logo} className="c-app__logo" alt="logo" />
+        <div className={styles.app}>
+            <div className={styles.header}>
+                <img src={logo} className={styles.logo} alt="logo" />
                 <h2>Welcome to React</h2>
             </div>
 

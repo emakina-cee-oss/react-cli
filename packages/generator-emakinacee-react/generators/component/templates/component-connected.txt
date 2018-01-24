@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from '@cerebral/react';
-import './<%= name %>.scss';
+import styles from './<%= name %>.scss';
 
 /**
  * <%= nameUpperCase %>
@@ -9,7 +9,7 @@ import './<%= name %>.scss';
  */
 const <%= name %> = () => {
     return (
-        <div className="c-<%= nameDash %>">
+        <div className={styles.<%= nameDash %>}>
             ...
         </div>
     );

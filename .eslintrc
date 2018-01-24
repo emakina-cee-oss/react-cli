@@ -1,13 +1,13 @@
 {
     "extends": [
-        "./packages/generator-emakinacee-react/generators/app/templates/dot/.eslintrc"
+        "./packages/generator-emakinacee-react/generators/app/templates/dot/static/.eslintrc"
     ],
 
     "rules": {
         "import/no-nodejs-modules": 0
     },
 
-    "globals": {
-        "require": true
+    "env": {
+        "node": true
     }
 }
