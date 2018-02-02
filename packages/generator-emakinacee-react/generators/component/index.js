@@ -81,6 +81,7 @@ class AppGenerator extends Generator {
         templatesToCopy.forEach((template) => {
             let fileEnding = 'js';
             if (template.includes('test')) fileEnding = 'spec.js';
+            if (template.includes('scss')) fileEnding = 'module.scss';
             if (template.includes('styleguide')) fileEnding = 'md';
 
             this.fs.copyTpl(
