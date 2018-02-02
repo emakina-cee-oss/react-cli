@@ -11,6 +11,7 @@ src/**/*.css
 
 # production
 /build
+/styleguide
 
 # misc
 .DS_Store

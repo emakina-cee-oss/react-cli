@@ -5,9 +5,12 @@
   "description": "",
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
+    "build": "react-app-rewired build",
     "serve:build": "serve ./build",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
+    "serve:styleguide": "serve ./styleguide",
     "eject": "react-scripts eject",
     "prettier": "prettier --write --tab-width 4 --single-quote --trailing-comma all \"src/**/*.js\""
   }
