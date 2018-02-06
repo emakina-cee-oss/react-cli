@@ -21,7 +21,8 @@ class AppGenerator extends Generator {
         this.log(`Spawning ${pathOptions.componentName} Component ...`);
 
         const templatesToCopy = [
-            'component-scss.txt'
+            'component-scss.txt',
+            'component-styleguide.md',
         ];
 
         if (this.options.connect) {
@@ -80,14 +81,14 @@ class AppGenerator extends Generator {
         templatesToCopy.forEach((template) => {
             let fileEnding = 'js';
             if (template.includes('test')) fileEnding = 'spec.js';
-            if (template.includes('scss')) fileEnding = 'scss';
+            if (template.includes('scss')) fileEnding = 'module.scss';
+            if (template.includes('styleguide')) fileEnding = 'md';
 
             this.fs.copyTpl(
                 this.templatePath(template),
                 this.destinationPath(`${path}.${fileEnding}`),
                 {
                     name: pathOptions.componentName,
-                    nameDash: changeCase.paramCase(pathOptions.componentName),
                     nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(pathOptions.componentName)),
                 }
             );

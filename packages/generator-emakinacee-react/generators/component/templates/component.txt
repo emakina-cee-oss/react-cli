@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './<%= name %>.scss';
+import styles from './<%= name %>.module.scss';
 
 /**
  * <%= nameUpperCase %>
@@ -8,7 +8,7 @@ import styles from './<%= name %>.scss';
  */
 const <%= name %> = () => {
     return (
-        <div className={styles.<%= nameDash %>}>
+        <div className={styles.wrapper}>
             ...
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './<%= name %>.scss';
+import styles from './<%= name %>.module.scss';
 
 /**
  * <%= nameUpperCase %>
@@ -15,7 +15,7 @@ class <%= name %> extends React.Component {
 
     render() {
         return (
-            <div className={styles.<%= nameDash %>}>
+            <div className={styles.wrapper}>
                 ...
             </div>
         );

@@ -163,6 +163,7 @@ class AppGenerator extends Generator {
         const dependencies = [
             'react@16',
             'react-dom@16',
+            'prop-types@15',
             'cerebral@4',
             '@cerebral/react@3',
             'sass-mq@4'
@@ -193,7 +194,8 @@ class AppGenerator extends Generator {
             'react-app-rewired@1',
             'node-sass@4',
             'sass-loader@6',
-            'serve@6'
+            'serve@6',
+            'react-styleguidist@6'
         ];
 
         this.npmInstall(devDependencies, { 'save-dev': true });
