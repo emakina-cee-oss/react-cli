@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 
-class AppGenerator extends Generator {
+class ComponentGenerator extends Generator {
 
     constructor(args, opts) {
         super(args, opts);
@@ -21,19 +21,19 @@ class AppGenerator extends Generator {
         this.log(`Spawning ${pathOptions.componentName} Component ...`);
 
         const templatesToCopy = [
-            'component-scss.txt',
-            'component-styleguide.md',
+            'styles.txt',
+            'styleguide.md',
         ];
 
         if (this.options.connect) {
             templatesToCopy.push('component-connected.txt');
-            templatesToCopy.push('component-connected-test.txt');
+            templatesToCopy.push('test-connected.txt');
         } else if (this.options.stateful) {
             templatesToCopy.push('component-stateful.txt');
-            templatesToCopy.push('component-test.txt');
+            templatesToCopy.push('test.txt');
         } else {
             templatesToCopy.push('component.txt');
-            templatesToCopy.push('component-test.txt');
+            templatesToCopy.push('test.txt');
         }
 
         this._copyFiles(templatesToCopy, pathOptions);
@@ -81,7 +81,7 @@ class AppGenerator extends Generator {
         templatesToCopy.forEach((template) => {
             let fileEnding = 'js';
             if (template.includes('test')) fileEnding = 'spec.js';
-            if (template.includes('scss')) fileEnding = 'module.scss';
+            if (template.includes('styles')) fileEnding = 'module.scss';
             if (template.includes('styleguide')) fileEnding = 'md';
 
             this.fs.copyTpl(
@@ -94,6 +94,6 @@ class AppGenerator extends Generator {
             );
         });
     }
-};
+}
 
-module.exports = AppGenerator;
+module.exports = ComponentGenerator;

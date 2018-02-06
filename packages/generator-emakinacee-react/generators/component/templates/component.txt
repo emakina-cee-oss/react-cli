@@ -2,11 +2,6 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import styles from './<%= name %>.module.scss';
 
-/**
- * <%= nameUpperCase %>
- *
- * @returns {XML} -
- */
 const <%= name %> = () => {
     return (
         <div className={styles.wrapper}>

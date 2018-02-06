@@ -2,9 +2,6 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import styles from './<%= name %>.module.scss';
 
-/**
- * <%= nameUpperCase %>
- */
 class <%= name %> extends React.Component {
 
     constructor(props) {
