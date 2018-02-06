@@ -3,11 +3,6 @@ import Home from '../Home/Home';
 import logo from './logo.svg';
 import styles from './App.module.scss';
 
-/**
- * APP
- *
- * @returns {XML} -
- */
 const App = () => {
     return (
         <div className={styles.app}>

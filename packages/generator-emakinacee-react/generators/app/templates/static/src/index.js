@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Container } from '@cerebral/react';
-import App from './components/App/App';
+import App from './containers/App/App';
 import controller from './controller';
 import registerServiceWorker from './registerServiceWorker';
 import './index.scss';
