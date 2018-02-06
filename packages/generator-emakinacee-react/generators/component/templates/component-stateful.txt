@@ -1,4 +1,5 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 import styles from './<%= name %>.module.scss';
 
 /**
@@ -21,5 +22,7 @@ class <%= name %> extends React.Component {
         );
     }
 }
+
+<%= name %>.propTypes = {};
 
 export default <%= name %>;
