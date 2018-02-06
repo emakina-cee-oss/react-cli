@@ -68,6 +68,14 @@ class AppGenerator extends Generator {
                 });
                 break;
 
+            case 'container':
+                this.composeWith(require.resolve('../container'), {
+                    arguments: args,
+                    stateful: this.options.stateful,
+                    connect: this.options.connect
+                });
+                break;
+
             case 'service':
                 this.composeWith(require.resolve('../service'), {
                     arguments: args
