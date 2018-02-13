@@ -1,19 +1,18 @@
 # EMAKINA React CLI
 
-An easy to use CLI for starting and building React projects in a fast and consistent way.
+An easy to use CLI for building React projects in a fast and consistent way.
 
 [![npm version](https://badge.fury.io/js/emakina-react-cli.svg)](http://badge.fury.io/js/emakina-react-cli)
 
-The EMAKINA React CLI is built on top of react-scripts used by 
-[Create React App](https://github.com/facebookincubator/create-react-app).  
-This way you can utilize all the awesome features of create-react-app.
-
-In addition you have access to some even more awesome features like
+The EMAKINA React CLI is built on top of [Create React App](https://github.com/facebookincubator/create-react-app).
+  
+This way you can utilize all the awesome features of create-react-app
+and in addition you have access to some even more awesome features like
 + [File Generators](https://github.com/emakina-cee-oss/react-cli#file-generators)
 + Built in SCSS support
 + Flexible ESLint configuration via .eslintrc file
 + Easy state and side effects management with [CerebralJS](https://cerebraljs.com/)
-+ [Adjustable webpack config](https://github.com/emakina-cee-oss/react-cli#change-webpack-config)
++ [Adjustable webpack config](https://github.com/emakina-cee-oss/react-cli#change-webpack-config) (without eject)
 
 
 
@@ -59,15 +58,15 @@ react g <scaffold> <name> [module]
 Scaffold   | Usage
 ---        | ---
 Component  | `react g component <AwesomeComponent>`
+Container  | `react g container <AwesomeContainer>`
 Module     | `react g module <AwesomeModule>`
-Service    | `react g service <AwesomeService>`
 Signal     | `react g signal <awesomeSignal> [<ModuleName>]`
 Action     | `react g action <awesomeAction> [<ModuleName>]`
 Factory    | `react g factory <awesomeFactory> [<ModuleName>]`
 Compute    | `react g compute <awesomeCompute> [<ModuleName>]`
 
-If the `ModuleName` is the files are created in the folder of the desired module. 
-If the `ModuleName` is omitted the files will be created in a shared folder.
+If the `ModuleName` is added the files are created in the folder of the desired module.
+If the `ModuleName` is omitted the files will be created in the shared folder.
 
 ### Some Comfortable Convenience
 As the CLI's main intend is to help you save time while being consistent,
@@ -84,8 +83,9 @@ react g component ComponentName
 
 Spawns the following Files:
 + `src/components/ComponentName/ComponentName.js`
-+ `src/components/ComponentName/ComponentName.scss`
++ `src/components/ComponentName/ComponentName.module.scss`
 + `src/components/ComponentName/ComponentName.spec.js`
++ `src/components/ComponentName/ComponentName.md`
 
 __Options__
 + `-c` or `--connect` (Connect a Component to Cerebral)
@@ -101,20 +101,38 @@ react g component somewhere/ComponentName
 Will result in `src/components/somewhere/ComponentName/ComponentName.js`.
 
 ```sh
-react g component ./containers/ComponentName
+react g component ./fancyComponents/ComponentName
 ```
-Will result in `src/containers/ComponentName/ComponentName.js`.
+Will result in `src/fancyComponents/ComponentName/ComponentName.js`.
 
 
 
-### Service
+### Container
 ```sh
-react g service AwesomeService
+react g container ContainerName
 ```
 
 Spawns the following Files:
-+ `src/shared/services/AwesomeService.js`
-+ `src/shared/services/AwesomeService.spec.js`
++ `src/containers/ContainerName/ContainerName.js`
++ `src/containers/ContainerName/ContainerName.spec.js`
+
+__Options__
++ `-c` or `--connect` (Connect a Component to Cerebral)
++ `-s` or `--stateful` (Generate a Stateful Component)
+
+__Variable Path__  
+By default, containers are created in the containers folder of the project.  
+It is possible to create them in different locations like shown in the examples below.
+
+```sh
+react g container somewhere/ContainerName
+```
+Will result in `src/containers/somewhere/ContainerName/ContainerName.js`.
+
+```sh
+react g container ./fancyContainers/ContainerName
+```
+Will result in `src/fancyContainers/ContainerName/ContainerName.js`.
 
 
 
@@ -174,33 +192,31 @@ Spawns the following Files:
 
 
 
+
 ## Project Structure
 There is a `public` folder for static files and a `src` folder for the fancy app code.
 
-Inside the `src` folder three main sections can be found. Components are located 
-in the `components` folder each component has its own folder which contains all resources
-used by the component.
-
-The `shared` folder is for code which is shared and can be consumed from many components and other
-parts of the app. Like utility functions, services etc.
-
-As Cerebral is used for state and side effects management the `modules` folder is introduced 
+As CerebralJS is used for state and side effects management the `modules` folder is introduced 
 to split Cerebral's state into modules. Therefore each module has its own folder 
 which contains signals, actions, computes, and so on.
 
 ```
 |-public
     |-index.html
-    |-manifest.json
 |-src
     |-components 
+        |-Button
+            |-Button.js
+            |-Button.md
+            |-Button.module.js
+            |-Button.spec.js
+    |-containers 
         |-App 
             |-App.js
             |-App.spec.js
-            |-App.scss
-            |-images
-                |-logo.svg
     |-modules 
+        |-Root
+            |-RootModule.js
         |-App
             |-signals
                 |-exampleSignal.js
@@ -215,7 +231,16 @@ which contains signals, actions, computes, and so on.
                 |-exampleFactory.js
                 |-exampleFactory.spec.js
             |-AppModule.js
-            |-AppModule.spec.js
+    |-styles
+        |-modules
+            |-flex.module.scss
+        |-settings
+            |-_settings.breakpoints.scss
+            |-_settings.colors.scss
+        |-tools
+            |-_tools.units.scss
+        |-_essentials.scss
+        |-global.scss
     |-shared
         |-signals
             |-exampleSignal.js
@@ -229,14 +254,10 @@ which contains signals, actions, computes, and so on.
         |-factories
             |-exampleFactory.js
             |-exampleFactory.spec.js
-        |-services
-            |-exampleService.js
-            |-exampleService.spec.js
         |-providers
             |-exampleProvider.js
             |-exampleProvider.spec.js
     |-index.js
-    |-index.css
     |-controller.js 
 ```
 
@@ -257,19 +278,34 @@ For Detailed information have a closer look to the documentation of
 
 
 
-## Styles (SCSS)
-By default, the support for SCSS is enabled.  
-Just import a .scss file into your component and Webpack will do the job.
+## Styles
+By default, CSS Modules are part of the setup.  
+As soon as a file is css/scss file ending is prefixed with module e.g. `foo.module.scss`
+Webpack will do the job and applies CSS Module scoping to the styles.
 
-### Variables and Tools
-Variables, Settings and tools which can be used by all components are placed in `./src/scss`.
+Also the support for SCSS is enabled by default.  
+Just replace the .css by the .scss file ending and you are fine to use
+the full power of SASS.
 
-If you add new files, add an import to _base-imports.scss which then gets imported by
-a components SCSS file to get access to all settings and tools.
+
+
+### "Framework"
+As you can see in the [Project Structure](https://github.com/emakina-cee-oss/react-cli#project-structure)
+there is already a little frame for the styles.
+
+Especially for the use of SCSS the _essentials.scss file is used to share all
+variables, settings, tools, etc. across the component or shared style modules.
+
+**Shared style modules** are placed in styles/modules/ just import and use them when
+needed.  
+They can be very convenient for e.g. utility styles to quickly apply some flex box rules
+or add a spacing.
+
+
 
 ### SASS MQ
-To work with Media Queries [SASS-MQ](https://github.com/sass-mq/sass-mq) is included.
-The breakpoints are configured in `./src/scss/settings/_settings.breakpoints.scss`.
+To work with media queries [SASS-MQ](https://github.com/sass-mq/sass-mq) is included.
+The breakpoints are configured in `./src/styles/settings/_settings.breakpoints.scss`.
 
 
 
