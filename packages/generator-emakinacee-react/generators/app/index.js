@@ -7,9 +7,6 @@ class AppGenerator extends Generator {
     constructor(args, opts) {
         super(args, opts);
 
-        this.option('spa');
-        this.option('yarn');
-
         this.argument('projectName', { type: String, required: true });
     }
 
@@ -166,7 +163,8 @@ class AppGenerator extends Generator {
             'prop-types@15',
             'cerebral@4',
             '@cerebral/react@3',
-            'sass-mq@4'
+            'sass-mq@4',
+            'classnames@2'
         ];
 
         this.npmInstall(dependencies, { 'save': true });
