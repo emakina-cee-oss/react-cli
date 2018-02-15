@@ -208,7 +208,7 @@ which contains signals, actions, computes, and so on.
         |-Button
             |-Button.js
             |-Button.md
-            |-Button.module.js
+            |-Button.module.scss
             |-Button.spec.js
     |-containers 
         |-App 
