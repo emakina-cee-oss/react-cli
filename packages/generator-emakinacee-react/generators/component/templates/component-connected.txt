@@ -13,7 +13,9 @@ const <%= name %> = () => {
 
 <%= name %>.propTypes = {};
 
-export default connect(
+export default <%= name %>;
+
+export const <%= name %>Connected = connect(
     {},
     <%= name %>
 );
