@@ -313,7 +313,7 @@ The breakpoints are configured in `./src/styles/settings/_settings.breakpoints.s
 
 ## Styleguide
 
-[React Styleguidist](https://react-styleguidist.js.org/) iss available and can be used out of 
+[React Styleguidist](https://react-styleguidist.js.org/) is available and can be used out of 
 the box. It documents all components in the components directory.
 
 Run `npm run styleguide` for development. It will start React Styleguidist in watch mode.  
