@@ -8,12 +8,12 @@ The EMAKINA React CLI is built on top of [Create React App](https://github.com/f
   
 This way you can utilize all the awesome features of create-react-app
 and in addition you have access to some even more awesome features like
-+ [File Generators](https://github.com/emakina-cee-oss/react-cli#file-generators)
++ [File Generators](#file-generators)
 + Built in SCSS support
 + Flexible ESLint configuration via .eslintrc file
 + Easy state and side effects management with [CerebralJS](https://cerebraljs.com/)
-+ [Adjustable webpack config](https://github.com/emakina-cee-oss/react-cli#change-webpack-config) (without eject)
-
++ [Adjustable webpack config](#change-webpack-config) (without eject)
++ [Styleguide](#styleguide)
 
 
 
@@ -55,15 +55,15 @@ react generate <scaffold> <name> [module]
 react g <scaffold> <name> [module]
 ```
 
-Scaffold   | Usage
----        | ---
-Component  | `react g component <AwesomeComponent>`
-Container  | `react g container <AwesomeContainer>`
-Module     | `react g module <AwesomeModule>`
-Signal     | `react g signal <awesomeSignal> [<ModuleName>]`
-Action     | `react g action <awesomeAction> [<ModuleName>]`
-Factory    | `react g factory <awesomeFactory> [<ModuleName>]`
-Compute    | `react g compute <awesomeCompute> [<ModuleName>]`
+Scaffold   | Usage                                             |
+-----------|---------------------------------------------------|
+Component  | `react g component <AwesomeComponent>`            |
+Container  | `react g container <AwesomeContainer>`            |
+Module     | `react g module <AwesomeModule>`                  |
+Signal     | `react g signal <awesomeSignal> [<ModuleName>]`   |
+Action     | `react g action <awesomeAction> [<ModuleName>]`   |
+Factory    | `react g factory <awesomeFactory> [<ModuleName>]` |
+Compute    | `react g compute <awesomeCompute> [<ModuleName>]` |
 
 If the `ModuleName` is added the files are created in the folder of the desired module.
 If the `ModuleName` is omitted the files will be created in the shared folder.
@@ -290,7 +290,7 @@ the full power of SASS.
 
 
 ### "Framework"
-As you can see in the [Project Structure](https://github.com/emakina-cee-oss/react-cli#project-structure)
+As you can see in the [Project Structure](#project-structure)
 there is already a little frame for the styles.
 
 Especially for the use of SCSS the _essentials.scss file is used to share all
@@ -307,6 +307,27 @@ or add a spacing.
 To work with media queries [SASS-MQ](https://github.com/sass-mq/sass-mq) is included.
 The breakpoints are configured in `./src/styles/settings/_settings.breakpoints.scss`.
 
+
+
+
+
+## Styleguide
+
+[React Styleguidist](https://react-styleguidist.js.org/) iss available and can be used out of 
+the box. It documents all components in the components directory.
+
+Run `npm run styleguide` for development. It will start React Styleguidist in watch mode.  
+Or use `npm run styleguide:build` if you want to host your style guide.
+You can check the build with `npm run serve:styleguide`
+
+To provide additional information to your components use the `.md` file which
+is generated automatically for all new components.
+
+React Styleguidist will use prop-types and defaults automatically also the 
+information from JS Doc comments are used in the style guide.
+
+Have a look to the [React Styleguidist](https://react-styleguidist.js.org/docs/getting-started.html) 
+documentation for more information.
 
 
 
