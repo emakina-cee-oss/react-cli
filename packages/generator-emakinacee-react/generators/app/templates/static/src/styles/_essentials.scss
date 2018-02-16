@@ -1,0 +1,25 @@
+
+// ESSENTIALS
+//
+// !!!
+// !!! DO NOT GENERATE CSS OUTPUT
+// !!!
+//
+// This file should contain all variables, functions, mixins, placeholders.
+// In short everything which does not generate direct CSS output.
+//
+// It then can be imported wherever you need access to those variables etc.
+// e.g. from within a components style module.
+// Check ../components/Button/Button.module.scss as an example.
+
+
+
+// SETTINGS
+@import "settings/settings.breakpoints";
+@import "settings/settings.colors";
+
+
+
+// TOOLS
+@import "../../node_modules/sass-mq/mq";
+@import "tools/tools.units";

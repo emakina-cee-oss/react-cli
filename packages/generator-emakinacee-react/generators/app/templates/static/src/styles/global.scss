@@ -1,0 +1,13 @@
+
+// GLOBAL STYLES
+//
+// These styles are imported on the index.js and will be added
+// to the good old global style scope without any CSS Modules
+// scoping applied.
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}

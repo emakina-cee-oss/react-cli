@@ -1,4 +1,4 @@
-@import "../../scss/base-imports";
+@import "../../styles/essentials";
 
 .app {
     @include mq($from: tablet) {
@@ -12,10 +12,10 @@
 }
 
 .header {
-    background-color: map_get($color-greyscale, darkest);
+    background-color: map_get($color-grays, "900");
     height: rem(150);
     padding: rem(20);
-    color: map_get($color-greyscale, white);
+    color: map_get($color-grays, "white");
 }
 
 .intro {

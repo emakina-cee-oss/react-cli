@@ -1,0 +1,84 @@
+
+// FLEX
+//
+// FlexBox utility styles
+
+
+
+// Display
+
+.flex {
+    display: flex !important;
+}
+
+.inlineFlex {
+    display: inline-flex !important;
+}
+
+
+
+// Direction
+
+.flexRow {
+    flex-direction: row !important;
+}
+
+.flexRowReverse {
+    flex-direction: row-reverse !important;
+}
+
+.flexColumn {
+    flex-direction: column !important;
+}
+
+.flexColumnReverse {
+    flex-direction: column-reverse !important;
+}
+
+
+
+// Justify Content
+
+.flexJustifyStart {
+    justify-content: flex-start !important;
+}
+
+.flexJustifyEnd {
+    justify-content: flex-end !important;
+}
+
+.flexJustifyCenter {
+    justify-content: center !important;
+}
+
+.flexJustifyBetween {
+    justify-content: space-between !important;
+}
+
+.flexJustifyAround {
+    justify-content: space-around !important;
+}
+
+
+
+// Align Items
+
+.flexAlignStart {
+    align-items: flex-start !important;
+}
+
+.flexAlignEnd {
+    align-items: flex-end !important;
+}
+
+.flexAlignCenter {
+    align-items: center !important;
+}
+
+.flexAlignBaseline {
+    align-items: baseline !important;
+}
+
+.flexAlignStretch {
+    align-items: stretch !important;
+}
