@@ -4,7 +4,8 @@
     ],
 
     "rules": {
-        "import/no-nodejs-modules": 0
+        "import/no-nodejs-modules": 0,
+        "import/no-namespace": 0
     },
 
     "env": {
