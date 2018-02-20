@@ -1,5 +1,5 @@
 /*
- * <%= nameUpperCase %>
+ * TEST SIGNAL
  */
 export default [
 ];
