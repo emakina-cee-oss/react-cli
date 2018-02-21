@@ -6,6 +6,6 @@ describe('Button', () => {
 
     it('renders without error', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<Button />, div);
+        ReactDOM.render(<Button label="foo" />, div);
     });
 });
