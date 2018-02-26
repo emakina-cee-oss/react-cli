@@ -1,10 +1,10 @@
-import { compute } from 'cerebral';
+import { Compute } from 'cerebral';
 import { state } from 'cerebral/tags'
 
 /**
  * <%= nameUpperCase %>
  */
-const <%= name %> = compute(
+const <%= name %> = Compute(
     state`foo`,
     (foo) => {
         return `${foo}bar`;
