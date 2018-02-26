@@ -13,7 +13,9 @@ const Foo = () => {
 
 Foo.propTypes = {};
 
-export default connect(
+export default Foo;
+
+export const FooConnected = connect(
     {},
     Foo
 );
