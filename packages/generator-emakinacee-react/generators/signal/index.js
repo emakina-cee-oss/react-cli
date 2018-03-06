@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 
-class AppGenerator extends Generator {
+class SignalGenerator extends Generator {
 
     constructor(args, opts) {
         super(args, opts);
@@ -77,4 +77,4 @@ class AppGenerator extends Generator {
     }
 };
 
-module.exports = AppGenerator;
+module.exports = SignalGenerator;

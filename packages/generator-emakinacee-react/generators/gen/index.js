@@ -128,6 +128,6 @@ class AppGenerator extends Generator {
         const nestableTypes = ['action', 'factory', 'compute', 'signal'];
         return nestableTypes.indexOf(this.options.type) > -1;
     }
-};
+}
 
 module.exports = AppGenerator;
