@@ -2,6 +2,7 @@
 
 An easy to use CLI for building React projects in a fast and consistent way.
 
+[![Build Status](https://travis-ci.org/emakina-cee-oss/react-cli.svg?branch=master)](https://travis-ci.org/emakina-cee-oss/react-cli)
 [![npm version](https://badge.fury.io/js/emakina-react-cli.svg)](http://badge.fury.io/js/emakina-react-cli)
 
 The EMAKINA React CLI is built on top of [Create React App](https://github.com/facebookincubator/create-react-app).
