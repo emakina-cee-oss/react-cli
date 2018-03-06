@@ -1,2 +1,4 @@
 test/snapshots/
 templates/
+coverage/
+.nyc_output/
