@@ -27,7 +27,8 @@
     "react": "./index.js"
   },
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha"
+    "test": "nyc --reporter=html --reporter=text mocha",
+    "lint": "eslint ."
   },
   "dependencies": {
     "commander": "2.14.1",
