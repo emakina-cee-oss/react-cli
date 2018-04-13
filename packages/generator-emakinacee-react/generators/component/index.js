@@ -42,14 +42,24 @@ class ComponentGenerator extends Generator {
     _getPathOptions() {
         const pathOptions = {};
         const split = this.options.path.split('/');
+        let relPath = '../../';
 
         if (split[0] === '') split.shift();
         if (split[0] === '.') {
             pathOptions.noDefaultFolder = true;
             split.shift();
+            relPath = '';
         }
+
+        split.forEach((s, idx) => {
+            if ((pathOptions.noDefaultFolder && idx === 0) || idx > 0) {
+                relPath += '../';
+            }
+        });
+
         pathOptions.componentName = this._getName(split.pop());
         pathOptions.path = split.join('/');
+        pathOptions.relativeStylesPath = relPath;
 
         return pathOptions;
     }
@@ -90,6 +100,7 @@ class ComponentGenerator extends Generator {
                 {
                     name: pathOptions.componentName,
                     nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(pathOptions.componentName)),
+                    styleEssentialsPath: `${pathOptions.relativeStylesPath}styles/essentials`
                 }
             );
         });
