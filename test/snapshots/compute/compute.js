@@ -1,7 +1,7 @@
 import { Compute } from 'cerebral';
 import { state } from 'cerebral/tags'
 
-/**
+/*
  * TEST COMPUTE
  */
 const testCompute = Compute(

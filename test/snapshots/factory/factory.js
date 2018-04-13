@@ -1,7 +1,5 @@
-/**
+/*
  * TEST FACTORY
- *
- * @returns {Function} -
  */
 const testFactory = () => {
     function test() {
