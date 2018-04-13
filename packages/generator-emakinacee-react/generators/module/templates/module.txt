@@ -1,6 +1,6 @@
 import { Module } from 'cerebral';
 
-/**
+/*
  * <%= nameUpperCase %>
  */
 export default Module({

@@ -1,7 +1,5 @@
-/**
+/*
  * <%= nameUpperCase %>
- *
- * @returns {Function} -
  */
 const <%= name %> = () => {
     function <%= nameInner %>() {
