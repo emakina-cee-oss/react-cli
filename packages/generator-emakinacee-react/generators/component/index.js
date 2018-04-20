@@ -42,24 +42,22 @@ class ComponentGenerator extends Generator {
     _getPathOptions() {
         const pathOptions = {};
         const split = this.options.path.split('/');
-        let relPath = '../../';
+        let relativePathToStyles = '../../';
 
         if (split[0] === '') split.shift();
         if (split[0] === '.') {
             pathOptions.noDefaultFolder = true;
             split.shift();
-            relPath = '';
+            relativePathToStyles = '../';
         }
 
         split.forEach((s, idx) => {
-            if ((pathOptions.noDefaultFolder && idx === 0) || idx > 0) {
-                relPath += '../';
-            }
+            if (idx > 0) relativePathToStyles += '../';
         });
 
         pathOptions.componentName = this._getName(split.pop());
         pathOptions.path = split.join('/');
-        pathOptions.relativeStylesPath = relPath;
+        pathOptions.relativeStylesPath = relativePathToStyles;
 
         return pathOptions;
     }
