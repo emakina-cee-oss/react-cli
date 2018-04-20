@@ -193,7 +193,9 @@ class AppGenerator extends Generator {
             'node-sass@4',
             'sass-loader@6',
             'serve@6',
-            'react-styleguidist@6'
+            'react-styleguidist@6',
+            'workbox-webpack-plugin@3',
+            'react-app-rewire-workbox@2',
         ];
 
         this.npmInstall(devDependencies, { 'save-dev': true });

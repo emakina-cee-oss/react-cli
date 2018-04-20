@@ -14,6 +14,7 @@ and in addition you have access to some even more awesome features like
 + Flexible ESLint configuration via .eslintrc file
 + Easy state and side effects management with [CerebralJS](https://cerebraljs.com/)
 + [Adjustable webpack config](#change-webpack-config) (without eject)
++ [Workbox](#service-worker-with-workbox)
 + [Styleguide](#styleguide)
 
 
@@ -312,6 +313,42 @@ The breakpoints are configured in `./src/styles/settings/_settings.breakpoints.s
 
 
 
+## Service Worker with Workbox
+Everything is set to build an offline first progressive web app right from the beginning.
+
+[Workbox](https://developers.google.com/web/tools/workbox/) is added with a basic 
+configuration to generate a ready to use service worker and pre-caching manifest for 
+all resources build within the Webpack pipeline.
+
+The service worker will be registered for production builds only, for local testing 
+you can simply use `npm run build` and `npm run serve:build` to start up a server.
+
+The configuration can be changed in `./config/rewireWorkboxGenerate.js`
+
+[Plugin documentation and further info](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#injectmanifest_plugin)
+
+
+__"But I want to write my own service worker!"__  
+Awesome! But you might want to have a look to the InjectManifest plugin to just automate
+the generation of the pre-caching manifest to add it to your own service worker file.
+
+Just create a new rewire file e.g. `./config/rewireWorkboxInject.js` and replace the
+`rewireWorkboxGenerate` in the rewire composition in `./config-overrides.js`.
+
+[More info about react-app-rewire-workbox](https://github.com/davejm/react-app-rewire-workbox)
+
+
+__"But I don't want a service worker!"__  
+In case you do not want a service worker at all it is enough to remove 
+the `registerServiceWorker();` call from `./src/index.js`.
+
+For cleanup you can remove `./src/registerServiceWorker.js` and remove
+`rewireWorkboxGenerate` from the rewire composition in `./config-overrides.js`.
+
+
+
+
+
 ## Styleguide
 
 [React Styleguidist](https://react-styleguidist.js.org/) is available and can be used out of 
@@ -329,6 +366,7 @@ information from JS Doc comments are used in the style guide.
 
 Have a look to the [React Styleguidist](https://react-styleguidist.js.org/docs/getting-started.html) 
 documentation for more information.
+
 
 
 
