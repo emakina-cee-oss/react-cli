@@ -9,14 +9,12 @@
  */
 
 const { compose } = require('react-app-rewired');
-const rewireSass = require('./config/rewireSass');
 const rewireESLint = require('./config/rewireESLint');
 const rewireWorkboxGenerate = require('./config/rewireWorkboxGenerate');
 
 module.exports = function override(config, env) {
     const rewires = compose(
         rewireESLint,
-        rewireSass,
         rewireWorkboxGenerate,
     );
 
