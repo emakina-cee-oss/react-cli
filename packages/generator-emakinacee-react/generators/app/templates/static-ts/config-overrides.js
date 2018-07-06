@@ -18,7 +18,6 @@ const {
 
 function rewireBabelLoaderForDependencies(config, env) {
     const rulesProp = (env === 'production') ? 'loader' : 'use';
-    //console.log('bubbleLoader', config);
     const jsRules = getLoader(
         config.module.rules,
         rule => String(rule.test) === String(/\.js$/)
