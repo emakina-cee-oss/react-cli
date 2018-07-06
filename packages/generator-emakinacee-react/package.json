@@ -1,6 +1,6 @@
 {
   "name": "generator-emakinacee-react",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Yeoman Generator utilized by EMAKINA CEE's React CLI",
   "keywords": [
     "yeoman-generator",
