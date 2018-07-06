@@ -5,12 +5,11 @@
             "debug": true
         }],
         "@babel/stage-3",
-        "@babel/react",
-        "@babel/typescript"
+        "@babel/react"
     ],
     "plugins": [
       ["module-resolver", {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "extensions": [".js", ".jsx"],
         "root": ["./src"]
       }]
     ],
@@ -24,8 +23,7 @@
             }
           }],
           "@babel/stage-3",
-          "@babel/react",
-          "@babel/typescript"
+          "@babel/react"
         ],
         "plugins": [
           "transform-es2015-modules-commonjs"
