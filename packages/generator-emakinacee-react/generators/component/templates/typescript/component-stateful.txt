@@ -1,0 +1,25 @@
+import React from 'react';
+import styles from './<%= name %>.module.scss';
+
+type <%= name %>Props {
+}
+
+class <%= name %> extends React.Component {
+
+    constructor(props: <%= name %>Props) {
+        super(props);
+
+        this.state = {
+        };
+    }
+
+    render() {
+        return (
+            <div className={styles.wrapper}>
+                ...
+            </div>
+        );
+    }
+}
+
+export default <%= name %>;
