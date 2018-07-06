@@ -213,7 +213,15 @@ class AppGenerator extends Generator {
      */
     _devPackagesInstall() {
         const devDependenciesShared = [
-            '@babel/preset-stage-3', // needed for styleguidist@7 to compile down dynamic import
+            '@babel/preset-stage-3', // compile down dynamic import in node_modules
+            'eslint-plugin-import@2',
+            'eslint-plugin-promise@3',
+            'eslint-plugin-standard@3',
+            'eslint-plugin-react@7',
+            'eslint-plugin-jsx-a11y@6',
+            'eslint-config-emakinacee-base@2',
+            'eslint-config-emakinacee-react@3',
+            'eslint-config-prettier@2',
             'node-sass@4',
             'prettier@1',
             'react-app-rewired@2',
@@ -227,14 +235,6 @@ class AppGenerator extends Generator {
 
         const devDependenciesJS = [].concat(devDependenciesShared, [
             'prop-types@15',
-            'eslint-plugin-import@2',
-            'eslint-plugin-promise@3',
-            'eslint-plugin-standard@3',
-            'eslint-plugin-react@7',
-            'eslint-plugin-jsx-a11y@6',
-            'eslint-config-emakinacee-base@2',
-            'eslint-config-emakinacee-react@3',
-            'eslint-config-prettier@2',
         ]);
 
         const devDependenciesTS = [].concat(devDependenciesShared, [
@@ -245,6 +245,7 @@ class AppGenerator extends Generator {
             'react-app-rewire-typescript-babel-preset@2',
             'react-docgen-typescript', // needed for styleguidist with ts
             'typescript@2',
+            'typescript-eslint-parser@16'
         ]);
         const devDependencies = this._useTS ? devDependenciesTS : devDependenciesJS;
         this.npmInstall(devDependencies, { 'save-dev': true });

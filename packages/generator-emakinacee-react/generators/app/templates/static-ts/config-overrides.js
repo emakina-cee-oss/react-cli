@@ -36,12 +36,14 @@ function rewireBabelLoaderToUseBabelRC(config, env) {
     babelLoader.options.babelrc = true;
     return config;
 }
+const rewireESLint = require('./config/rewireESLint');
 
 module.exports = {
     webpack: function (config, env) {
         config = rewireBabelLoaderForDependencies(config, env);
         config = rewireTypescript(config, env);
         config = rewireBabelLoaderToUseBabelRC(config, env);
+        config = rewireESLint(config);
         return config;
     },
     jest: function (config) {
