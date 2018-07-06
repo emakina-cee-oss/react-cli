@@ -18,7 +18,9 @@ class ComponentGenerator extends Generator {
      */
     initializing() {
         const yoConfig = this.config.getAll();
-        this._useTS = yoConfig.promptValues.useTS || false;
+        this._useTS = (yoConfig && yoConfig.promptValues)
+            ? yoConfig.promptValues.useTS
+            : false;
     }
 
     /**

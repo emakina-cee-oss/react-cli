@@ -17,8 +17,8 @@ describe('Component', () => {
 
         it('generates all files', () => {
             yoAssert.file([
-                './src/components/Foo/Foo.js',
-                './src/components/Foo/Foo.spec.js',
+                './src/components/Foo/Foo.jsx',
+                './src/components/Foo/Foo.spec.jsx',
                 './src/components/Foo/Foo.md',
                 './src/components/Foo/Foo.module.scss',
             ]);
@@ -30,7 +30,7 @@ describe('Component', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/components/Foo/Foo.js',
+                    './src/components/Foo/Foo.jsx',
                     template
                 );
                 done();
@@ -43,7 +43,7 @@ describe('Component', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/components/Foo/Foo.spec.js',
+                    './src/components/Foo/Foo.spec.jsx',
                     template
                 );
                 done();
@@ -87,8 +87,8 @@ describe('Component', () => {
 
         it('generates all files', () => {
             yoAssert.file([
-                './src/components/Foo/Foo.js',
-                './src/components/Foo/Foo.spec.js',
+                './src/components/Foo/Foo.jsx',
+                './src/components/Foo/Foo.spec.jsx',
                 './src/components/Foo/Foo.md',
                 './src/components/Foo/Foo.module.scss',
             ]);
@@ -100,7 +100,7 @@ describe('Component', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/components/Foo/Foo.js',
+                    './src/components/Foo/Foo.jsx',
                     template
                 );
                 done();
@@ -113,7 +113,7 @@ describe('Component', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/components/Foo/Foo.spec.js',
+                    './src/components/Foo/Foo.spec.jsx',
                     template
                 );
                 done();
@@ -157,8 +157,8 @@ describe('Component', () => {
 
         it('generates all files', () => {
             yoAssert.file([
-                './src/components/Foo/Foo.js',
-                './src/components/Foo/Foo.spec.js',
+                './src/components/Foo/Foo.jsx',
+                './src/components/Foo/Foo.spec.jsx',
                 './src/components/Foo/Foo.md',
                 './src/components/Foo/Foo.module.scss',
             ]);
@@ -170,7 +170,7 @@ describe('Component', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/components/Foo/Foo.js',
+                    './src/components/Foo/Foo.jsx',
                     template
                 );
                 done();
@@ -183,7 +183,7 @@ describe('Component', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/components/Foo/Foo.spec.js',
+                    './src/components/Foo/Foo.spec.jsx',
                     template
                 );
                 done();
@@ -224,8 +224,8 @@ describe('Component', () => {
             .withArguments(['sub/foo'])
             .then(() => {
                 yoAssert.file([
-                    './src/components/sub/Foo/Foo.js',
-                    './src/components/sub/Foo/Foo.spec.js',
+                    './src/components/sub/Foo/Foo.jsx',
+                    './src/components/sub/Foo/Foo.spec.jsx',
                     './src/components/sub/Foo/Foo.md',
                     './src/components/sub/Foo/Foo.module.scss',
                 ]);
@@ -238,8 +238,8 @@ describe('Component', () => {
             .withArguments(['./someWhereOverTheRainbow/foo'])
             .then(() => {
                 yoAssert.file([
-                    './src/someWhereOverTheRainbow/Foo/Foo.js',
-                    './src/someWhereOverTheRainbow/Foo/Foo.spec.js',
+                    './src/someWhereOverTheRainbow/Foo/Foo.jsx',
+                    './src/someWhereOverTheRainbow/Foo/Foo.spec.jsx',
                     './src/someWhereOverTheRainbow/Foo/Foo.md',
                     './src/someWhereOverTheRainbow/Foo/Foo.module.scss',
                 ]);
