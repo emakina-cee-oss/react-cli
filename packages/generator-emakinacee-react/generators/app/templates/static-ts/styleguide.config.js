@@ -26,5 +26,8 @@ const parserOptions = {};
 module.exports = {
     components: 'src/components/**/*.{js,jsx,ts,tsx}',
     webpackConfig: finalConfig,
+    // propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json', [
+    //     parserOptions,
+    // ]).parse,
     propsParser: require('react-docgen-typescript').withDefaultConfig([parserOptions]).parse,
 };

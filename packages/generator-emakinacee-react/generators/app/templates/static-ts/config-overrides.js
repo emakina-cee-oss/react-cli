@@ -10,43 +10,35 @@ const {
     rewireJest: rewireTypescriptJest,
 } = require('react-app-rewire-typescript-babel-preset');
 
+const {
+    getBabelLoader,
+    getLoader,
+    loaderNameMatches,
+} = require('react-app-rewired');
 
-///////
+function rewireBabelLoaderForDependencies(config, env) {
+    const rulesProp = (env === 'production') ? 'loader' : 'use';
+    //console.log('bubbleLoader', config);
+    const jsRules = getLoader(
+        config.module.rules,
+        rule => String(rule.test) === String(/\.js$/)
+    );
 
-const path = require("path");
-const fs = require("fs");
+    const babelLoaderForDependencies = getLoader(jsRules[rulesProp], (rule) => {
+        return loaderNameMatches(rule, 'babel-loader');
+    });
 
-const rewireBabelLoader = require('react-app-rewire-babel-loader');
-
-
-// helpers
-
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-//////
+    babelLoaderForDependencies.options.presets = babelLoaderForDependencies.options.presets.concat([require.resolve('@babel/preset-stage-3')]);
+    return config;
+}
 
 module.exports = {
-    webpack: function(config, env) {
+    webpack: function (config, env) {
+        config = rewireBabelLoaderForDependencies(config, env);
         config = rewireTypescript(config, env);
-
-        // white-list some npm modules to the babel-loader pipeline
-        // see: https://webpack.js.org/configuration/module/#rule-include
-
-        config = rewireBabelLoader.include(
-            config,
-            resolveApp('node_modules/react-styleguidist')
-        );
-
-        // black-list some modules from the babel-loader pipeline
-        // see: https://webpack.js.org/configuration/module/#rule-exclude
-        config = rewireBabelLoader.exclude(
-            config,
-            /(node_modules|bower_components)/
-        );
-
         return config;
     },
-    jest: function(config) {
+    jest: function (config) {
         return rewireTypescriptJest(config);
     },
 };
