@@ -43,25 +43,25 @@ class AppGenerator extends Generator {
         });
 
         prompts.push({
-            type: 'input',
+            type: 'confirm',
             name: 'useTS',
             message: 'Add support for typescript',
-            default: 'true',
+            default: true,
             store: true
         });
 
         prompts.push({
-            type: 'input',
+            type: 'confirm',
             name: 'saveExact',
             message: 'Save exact npm-versions',
-            default: 'false'
+            default: false
         });
 
         return this.prompt(prompts).then((answers) => {
             this._appName = answers.appName;
             this._appNameShort = answers.appNameShort;
-            this._useTS = answers.useTS === 'true';
-            this._saveExact = answers.saveExact === 'true';
+            this._useTS = answers.useTS;
+            this._saveExact = answers.saveExact;
         });
     }
 
