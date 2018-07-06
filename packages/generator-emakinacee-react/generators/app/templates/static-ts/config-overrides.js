@@ -31,10 +31,17 @@ function rewireBabelLoaderForDependencies(config, env) {
     return config;
 }
 
+function rewireBabelLoaderToUseBabelRC(config, env) {
+    const babelLoader = getBabelLoader(config.module.rules);
+    babelLoader.options.babelrc = true;
+    return config;
+}
+
 module.exports = {
     webpack: function (config, env) {
         config = rewireBabelLoaderForDependencies(config, env);
         config = rewireTypescript(config, env);
+        config = rewireBabelLoaderToUseBabelRC(config, env);
         return config;
     },
     jest: function (config) {
