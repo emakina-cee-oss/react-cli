@@ -8,7 +8,7 @@
     "module": "es2015",
     "target": "esnext",
     "moduleResolution": "node",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2018", "dom"],
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
