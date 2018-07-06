@@ -10,7 +10,7 @@ const Home = ({ title }) => {
     return (
         <div>
             <h1>{title}</h1>
-            <p>To get started, edit <code>src/containers/App/App.js</code> and save to reload.</p>
+            <p>To get started, edit <code>src/containers/App/App.tsx</code> and save to reload.</p>
 
             <div
                 className={classNames(
