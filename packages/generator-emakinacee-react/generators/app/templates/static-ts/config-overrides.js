@@ -16,26 +16,13 @@ const {
     loaderNameMatches,
 } = require('react-app-rewired');
 
-function rewireBabelLoaderForDependencies(config, env) {
-    const rulesProp = (env === 'production') ? 'loader' : 'use';
-    const jsRules = getLoader(
-        config.module.rules,
-        rule => String(rule.test) === String(/\.js$/)
-    );
-
-    const babelLoaderForDependencies = getLoader(jsRules[rulesProp], (rule) => {
-        return loaderNameMatches(rule, 'babel-loader');
-    });
-
-    babelLoaderForDependencies.options.presets = babelLoaderForDependencies.options.presets.concat([require.resolve('@babel/preset-stage-3')]);
-    return config;
-}
 
 function rewireBabelLoaderToUseBabelRC(config, env) {
     const babelLoader = getBabelLoader(config.module.rules);
     babelLoader.options.babelrc = true;
     return config;
 }
+const rewireBabelLoaderForDependencies = require('./config/rewireBabelLoaderForDependencies');
 const rewireESLint = require('./config/rewireESLint');
 
 module.exports = {
