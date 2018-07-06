@@ -75,6 +75,7 @@ class AppGenerator extends Generator {
         this._copyStaticFiles('dot/static');
         if (this._useTS) {
             this._copyStaticFile('dot/optional', 'tsconfig.json');
+            this._copyStaticFile('dot/optional', '.babelrc');
         }
         if (this._saveExact) {
             this._copyStaticFile('dot/optional', '.npmrc');
