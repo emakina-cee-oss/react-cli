@@ -197,7 +197,6 @@ class AppGenerator extends Generator {
             'react-dom@16',
             'cerebral@4',
             '@cerebral/react@3',
-            'sass-mq@4',
             'classnames@2'
         ];
 
@@ -219,6 +218,7 @@ class AppGenerator extends Generator {
             'react-scripts@next',
             'react-styleguidist@7',
             'react-app-rewire-workbox@2',
+            'sass-mq@4',
             'serve@6',
             'workbox-webpack-plugin@3',
         ];
