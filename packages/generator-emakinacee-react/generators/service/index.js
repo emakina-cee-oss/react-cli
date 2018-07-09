@@ -10,6 +10,18 @@ class AppGenerator extends Generator {
     }
 
     /**
+     * INITIALIZING
+     *
+     * @returns {undefined}
+     */
+    initializing() {
+        const yoConfig = this.config.getAll();
+        this._useTS = (yoConfig && yoConfig.promptValues)
+            ? yoConfig.promptValues.useTS
+            : false;
+    }
+
+    /**
      * WRITING
      *
      * @returns {undefined}
@@ -37,9 +49,11 @@ class AppGenerator extends Generator {
      * @private
      */
     _copyFiles() {
+        const scriptExtension = this._useTS ? 'ts' : 'js';
+
         this.fs.copyTpl(
             this.templatePath('service-class.txt'),
-            this.destinationPath(`src/shared/services/${this._getName()}.js`),
+            this.destinationPath(`src/shared/services/${this._getName()}.${scriptExtension}`),
             {
                 name: this._getName(),
                 nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName()))
@@ -47,7 +61,7 @@ class AppGenerator extends Generator {
         );
         this.fs.copyTpl(
             this.templatePath('service-test.txt'),
-            this.destinationPath(`src/shared/services/${this._getName()}.spec.js`),
+            this.destinationPath(`src/shared/services/${this._getName()}.spec.${scriptExtension}`),
             {
                 name: this._getName(),
             }
