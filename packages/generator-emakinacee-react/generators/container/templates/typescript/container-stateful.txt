@@ -1,0 +1,23 @@
+import React from 'react';
+
+type <%= name %>Props = {
+}
+
+class <%= name %> extends React.Component {
+
+    constructor(props: <%= name %>Props) {
+        super(props);
+
+        this.state = {};
+    }
+
+    render() {
+        return (
+            <div>
+                ...
+            </div>
+        );
+    }
+}
+
+export default <%= name %>;

@@ -1,0 +1,14 @@
+import React from 'react';
+
+type <%= name %>Props = {
+}
+
+const <%= name %>: React.StatelessComponent<<%= name %>Props> = () => {
+    return (
+        <div>
+            ...
+        </div>
+    );
+};
+
+export default <%= name %>;

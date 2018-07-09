@@ -12,27 +12,39 @@ class ContainerGenerator extends Generator {
     }
 
     /**
+     * INITIALIZING
+     *
+     * @returns {undefined}
+     */
+    initializing() {
+        const yoConfig = this.config.getAll();
+        this._useTS = (yoConfig && yoConfig.promptValues)
+            ? yoConfig.promptValues.useTS
+            : false;
+    }
+
+    /**
      * WRITING
      *
      * @returns {undefined}
      */
     writing() {
         const pathOptions = this._getPathOptions();
-        this.log(`Spawning ${pathOptions.componentName} Container Component ...`);
-
+        const subfolder = this._useTS ? 'typescript' : 'javascript';
         const templatesToCopy = [];
 
         if (this.options.connect) {
-            templatesToCopy.push('container-connected.txt');
-            templatesToCopy.push('test-connected.txt');
+            templatesToCopy.push(`${subfolder}/container-connected.txt`);
+            templatesToCopy.push(`${subfolder}/test-connected.txt`);
         } else if (this.options.stateful) {
-            templatesToCopy.push('container-stateful.txt');
-            templatesToCopy.push('test.txt');
+            templatesToCopy.push(`${subfolder}/container-stateful.txt`);
+            templatesToCopy.push(`${subfolder}/test.txt`);
         } else {
-            templatesToCopy.push('container.txt');
-            templatesToCopy.push('test.txt');
+            templatesToCopy.push(`${subfolder}/container.txt`);
+            templatesToCopy.push(`${subfolder}/test.txt`);
         }
 
+        this.log(`Spawning ${pathOptions.componentName} Container Component ...`);
         this._copyFiles(templatesToCopy, pathOptions);
     }
 
@@ -71,13 +83,14 @@ class ContainerGenerator extends Generator {
      * @private
      */
     _copyFiles(templatesToCopy, pathOptions) {
+        const scriptExtension = this._useTS ? 'tsx' : 'jsx';
         const path = pathOptions.noDefaultFolder
             ? `src/${pathOptions.path}/${pathOptions.componentName}/${pathOptions.componentName}`
             : `src/containers/${pathOptions.path}/${pathOptions.componentName}/${pathOptions.componentName}`;
 
         templatesToCopy.forEach((template) => {
-            let fileEnding = 'js';
-            if (template.includes('test')) fileEnding = 'spec.js';
+            let fileEnding = scriptExtension;
+            if (template.includes('test')) fileEnding = `spec.${scriptExtension}`;
 
             this.fs.copyTpl(
                 this.templatePath(template),
