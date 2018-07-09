@@ -22,7 +22,7 @@ module.exports = {
     webpack: function (config, env) {
         config = rewireTypescript(config, env);
         config = rewireESLint(config);
-        config = rewireWorkboxGenerate(config);
+        config = rewireWorkboxGenerate(config, env);
         return config;
     },
     jest: function (config) {
