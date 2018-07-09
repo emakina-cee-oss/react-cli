@@ -11,14 +11,12 @@
 const { compose } = require('react-app-rewired');
 const rewireESLint = require('./config/rewireESLint');
 const rewireWorkboxGenerate = require('./config/rewireWorkboxGenerate');
-const rewireBabelLoaderForDependencies = require('./config/rewireBabelLoaderForDependencies');
 
 
 module.exports = function override(config, env) {
     const rewires = compose(
         rewireESLint,
         rewireWorkboxGenerate,
-        rewireBabelLoaderForDependencies
     );
 
     return rewires(config, env);

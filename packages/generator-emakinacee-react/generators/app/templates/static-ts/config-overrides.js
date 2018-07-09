@@ -15,14 +15,14 @@ const {
     loaderNameMatches,
 } = require('react-app-rewired');
 
-const rewireBabelLoaderForDependencies = require('./config/rewireBabelLoaderForDependencies');
 const rewireESLint = require('./config/rewireESLint');
+const rewireWorkboxGenerate = require('./config/rewireWorkboxGenerate');
 
 module.exports = {
     webpack: function (config, env) {
-        config = rewireBabelLoaderForDependencies(config, env);
         config = rewireTypescript(config, env);
         config = rewireESLint(config);
+        config = rewireWorkboxGenerate(config);
         return config;
     },
     jest: function (config) {
