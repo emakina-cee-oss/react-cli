@@ -95,7 +95,7 @@ class AppGenerator extends Generator {
         let additionalScripts = '';
         if (this._useTS) {
             this._copyStaticFiles('static-ts');
-            additionalScripts = '"typecheck": "tsc",\n    "typecheck:watch": "tsc --watch",';
+            additionalScripts = '"typecheck": "tsc",';
         } else {
             this._copyStaticFiles('static-js');
         }
