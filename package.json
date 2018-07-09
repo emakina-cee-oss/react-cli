@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "commander": "2.14.1",
-    "generator-emakinacee-react": "5.0.0",
+    "generator-emakinacee-react": "4.0.0",
     "yo": "2.0.1"
   },
   "devDependencies": {
