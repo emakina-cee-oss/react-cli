@@ -11,7 +11,6 @@
 const { compose } = require('react-app-rewired');
 const rewireESLint = require('./config/rewireESLint');
 const rewireWorkboxGenerate = require('./config/rewireWorkboxGenerate');
-const rewireBabelLoaderToUseBabelRC = require('./config/rewireBabelLoaderToUseBabelRC');
 const rewireBabelLoaderForDependencies = require('./config/rewireBabelLoaderForDependencies');
 
 
