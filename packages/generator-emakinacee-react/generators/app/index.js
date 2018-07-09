@@ -213,7 +213,6 @@ class AppGenerator extends Generator {
      */
     _devPackagesInstall() {
         const devDependenciesShared = [
-            '@babel/preset-stage-3', // compile down dynamic import in node_modules
             'eslint-plugin-import@2',
             'eslint-plugin-promise@3',
             'eslint-plugin-standard@3',
