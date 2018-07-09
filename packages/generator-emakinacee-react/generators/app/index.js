@@ -241,6 +241,7 @@ class AppGenerator extends Generator {
             '@types/react@16',
             '@types/react-dom@16',
             '@types/jest@22',
+            'eslint-plugin-typescript@0',
             'react-app-rewire-typescript-babel-preset@2',
             'react-docgen-typescript', // needed for styleguidist with ts
             'typescript@2',
