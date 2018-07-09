@@ -17,10 +17,12 @@ const {
 
 const rewireESLint = require('./config/rewireESLint');
 const rewireWorkboxGenerate = require('./config/rewireWorkboxGenerate');
+const rewireTSCheckerPlugin = require('./config/rewireTSCheckerPlugin');
 
 module.exports = {
     webpack: function (config, env) {
         config = rewireTypescript(config, env);
+        config = rewireTSCheckerPlugin(config, env);
         config = rewireESLint(config);
         config = rewireWorkboxGenerate(config, env);
         return config;
