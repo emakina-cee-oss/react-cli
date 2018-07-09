@@ -46,7 +46,7 @@ class AppGenerator extends Generator {
             type: 'confirm',
             name: 'useTS',
             message: 'Add support for typescript',
-            default: true,
+            default: false,
             store: true
         });
 
