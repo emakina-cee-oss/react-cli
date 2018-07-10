@@ -11,9 +11,9 @@
     "build": "react-app-rewired build",
     "serve:help": "serve help",
     "serve:build": "serve ./build --single --open",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
-    "serve:styleguide": "serve ./styleguide",
+    "styleguide": "echo \"The style guide feature is not yet available in the @next version.\" && exit 0",
+    "styleguide:build": "echo \"The style guide feature is not yet available in the @next version.\" && exit 0",
+    "serve:styleguide": "echo \"The style guide feature is not yet available in the @next version.\" && exit 0",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""
   },
