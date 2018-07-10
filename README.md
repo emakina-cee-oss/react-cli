@@ -6,7 +6,7 @@ An easy to use CLI for building React projects in a fast and consistent way.
 [![npm version](https://badge.fury.io/js/emakina-react-cli.svg)](http://badge.fury.io/js/emakina-react-cli)
 
 The EMAKINA React CLI is built on top of [Create React App](https://github.com/facebookincubator/create-react-app).
-  
+
 This way you can utilize all the awesome features of create-react-app
 and in addition you have access to some even more awesome features like
 + [File Generators](#file-generators)
@@ -27,7 +27,7 @@ __1. Install the CLI__
 npm install -g emakina-react-cli
 ```
 
-__2. Create a new Project__
+__2. Create a new Project__ (with a container, module and example _Button_ component)
 ```sh
 react new <projectName>
 ```
@@ -38,7 +38,7 @@ cd <projectName>
 npm start
 ```
 
-> Also have a look to the [Create React App](https://github.com/facebookincubator/create-react-app) 
+> Also have a look to the [Create React App](https://github.com/facebookincubator/create-react-app)
 documentation for more information.
 
 
@@ -49,34 +49,32 @@ documentation for more information.
 
 To add new parts to your app simply tell your console what you need.
 ```sh
-react generate <scaffold> <name> [module]
+react generate <Scaffold> <name> [module name] [options]
 ```
 
 *As a shorthand you can type:*
 ```sh
-react g <scaffold> <name> [module]
+react g <Scaffold> <name> [module name] [options]
 ```
 
-Scaffold   | Usage                                             |
------------|---------------------------------------------------|
-Component  | `react g component <AwesomeComponent>`            |
-Container  | `react g container <AwesomeContainer>`            |
-Module     | `react g module <AwesomeModule>`                  |
-Signal     | `react g signal <awesomeSignal> [<ModuleName>]`   |
-Action     | `react g action <awesomeAction> [<ModuleName>]`   |
-Factory    | `react g factory <awesomeFactory> [<ModuleName>]` |
-Compute    | `react g compute <awesomeCompute> [<ModuleName>]` |
+Scaffold   | CLI command                                       | Note         |
+-----------|---------------------------------------------------|--------------|
+Component  | `react g component <AwesomeComponent> [options]`            | stateless, optionally connected to Cerebral state ([Cerebral Docs](https://cerebraljs.com/docs/views/react.html#@cerebral/react-connect)), or as React Class |
+Container  | `react g container <AwesomeContainer> [options]`            | Same as a Component, but is not part of the Style Guide |
+Module     | `react g module <AwesomeModule>`                  | namespace for the app logic, [Cerebral Docs](https://cerebraljs.com/docs/introduction/modules.html) |
+Signal     | `react g signal <awesomeSignal> [module name]`   | Signals are called to change the app state, [Cerebral Docs](https://cerebraljs.com/docs/introduction/signals.html) |
+Action     | `react g action <awesomeAction> [module name]`   | Actions are parts of a Signal, [Cerebral Docs](https://cerebraljs.com/docs/introduction/signals.html#signals-actions) |
+Compute    | `react g compute <awesomeCompute> [module name]` | Derived values from state (cached), [Cerebral Docs](https://cerebraljs.com/docs/introduction/compute.html)|
+Factory    | `react g factory <awesomeFactory> [module name]` | A generic scaffold. |
 
-If the `ModuleName` is added the files are created in the folder of the desired module.
-If the `ModuleName` is omitted the files will be created in the shared folder.
+If the `ModuleName` is added, the files are created in the folder of the desired module.
+If the `ModuleName` is omitted, the files will be created in the shared folder.
 
 ### Some Comfortable Convenience
 As the CLI's main intend is to help you save time while being consistent,
 it is built to only write the necessary things.
 
-So `react g signal foo bar` will still generate `fooSignal` in the module folder `Bar`.
-
-
+`react g signal foo bar` will generate a file named `fooSignal` in the module folder `Bar`. Note the _Signal_ suffix.
 
 ### Component
 ```sh
@@ -93,8 +91,8 @@ __Options__
 + `-c` or `--connect` (Connect a Component to Cerebral)
 + `-s` or `--stateful` (Generate a Stateful Component)
 
-__Variable Path__  
-By default, components are created in the components folder of the project.  
+__Variable Path__
+By default, components are created in the components folder of the project.
 It is possible to create them in different locations like shown in the examples below.
 
 ```sh
@@ -110,6 +108,8 @@ Will result in `src/fancyComponents/ComponentName/ComponentName.js`.
 
 
 ### Container
+
+Containers are not part of the style guide. They could be used as a _Smart Component_, which connects to the state.
 ```sh
 react g container ContainerName
 ```
@@ -122,8 +122,8 @@ __Options__
 + `-c` or `--connect` (Connect a Component to Cerebral)
 + `-s` or `--stateful` (Generate a Stateful Component)
 
-__Variable Path__  
-By default, containers are created in the containers folder of the project.  
+__Variable Path__
+By default, containers are created in the containers folder of the project.
 It is possible to create them in different locations like shown in the examples below.
 
 ```sh
@@ -198,25 +198,25 @@ Spawns the following Files:
 ## Project Structure
 There is a `public` folder for static files and a `src` folder for the fancy app code.
 
-As CerebralJS is used for state and side effects management the `modules` folder is introduced 
-to split Cerebral's state into modules. Therefore each module has its own folder 
+As CerebralJS is used for state and side effects management the `modules` folder is introduced
+to split Cerebral's state into modules. Therefore each module has its own folder
 which contains signals, actions, computes, and so on.
 
 ```
 |-public
     |-index.html
 |-src
-    |-components 
+    |-components
         |-Button
             |-Button.js
             |-Button.md
             |-Button.module.scss
             |-Button.spec.js
-    |-containers 
-        |-App 
+    |-containers
+        |-App
             |-App.js
             |-App.spec.js
-    |-modules 
+    |-modules
         |-Root
             |-RootModule.js
         |-App
@@ -260,7 +260,7 @@ which contains signals, actions, computes, and so on.
             |-exampleProvider.js
             |-exampleProvider.spec.js
     |-index.js
-    |-controller.js 
+    |-controller.js
 ```
 
 
@@ -281,11 +281,11 @@ For Detailed information have a closer look to the documentation of
 
 
 ## Styles
-By default, CSS Modules are part of the setup.  
+By default, CSS Modules are part of the setup.
 As soon as a file is css/scss file ending is prefixed with module e.g. `foo.module.scss`
 Webpack will do the job and applies CSS Module scoping to the styles.
 
-Also the support for SCSS is enabled by default.  
+Also the support for SCSS is enabled by default.
 Just replace the .css by the .scss file ending and you are fine to use
 the full power of SASS.
 
@@ -299,7 +299,7 @@ Especially for the use of SCSS the _essentials.scss file is used to share all
 variables, settings, tools, etc. across the component or shared style modules.
 
 **Shared style modules** are placed in styles/modules/ just import and use them when
-needed.  
+needed.
 They can be very convenient for e.g. utility styles to quickly apply some flex box rules
 or add a spacing.
 
@@ -316,11 +316,11 @@ The breakpoints are configured in `./src/styles/settings/_settings.breakpoints.s
 ## Service Worker with Workbox
 Everything is set to build an offline first progressive web app right from the beginning.
 
-[Workbox](https://developers.google.com/web/tools/workbox/) is added with a basic 
-configuration to generate a ready to use service worker and pre-caching manifest for 
+[Workbox](https://developers.google.com/web/tools/workbox/) is added with a basic
+configuration to generate a ready to use service worker and pre-caching manifest for
 all resources build within the Webpack pipeline.
 
-The service worker will be registered for production builds only, for local testing 
+The service worker will be registered for production builds only, for local testing
 you can simply use `npm run build` and `npm run serve:build` to start up a server.
 
 The configuration can be changed in `./config/rewireWorkboxGenerate.js`
@@ -328,7 +328,7 @@ The configuration can be changed in `./config/rewireWorkboxGenerate.js`
 [Plugin documentation and further info](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#injectmanifest_plugin)
 
 
-__"But I want to write my own service worker!"__  
+__"But I want to write my own service worker!"__
 Awesome! But you might want to have a look to the InjectManifest plugin to just automate
 the generation of the pre-caching manifest to add it to your own service worker file.
 
@@ -338,8 +338,8 @@ Just create a new rewire file e.g. `./config/rewireWorkboxInject.js` and replace
 [More info about react-app-rewire-workbox](https://github.com/davejm/react-app-rewire-workbox)
 
 
-__"But I don't want a service worker!"__  
-In case you do not want a service worker at all it is enough to remove 
+__"But I don't want a service worker!"__
+In case you do not want a service worker at all it is enough to remove
 the `registerServiceWorker();` call from `./src/index.js`.
 
 For cleanup you can remove `./src/registerServiceWorker.js` and remove
@@ -351,20 +351,20 @@ For cleanup you can remove `./src/registerServiceWorker.js` and remove
 
 ## Styleguide
 
-[React Styleguidist](https://react-styleguidist.js.org/) is available and can be used out of 
+[React Styleguidist](https://react-styleguidist.js.org/) is available and can be used out of
 the box. It documents all components in the components directory.
 
-Run `npm run styleguide` for development. It will start React Styleguidist in watch mode.  
-Or use `npm run styleguide:build` if you want to host your style guide.
-You can check the build with `npm run serve:styleguide`
+To use it do one of the two:
+1. `npm run styleguide` will start React Styleguidist in watch mode.
+2. `npm run styleguide:build` to build and optionally `npm run serve:styleguide` to serve it locally.
 
-To provide additional information to your components use the `.md` file which
+To provide additional information to your components, use the `.md` file which
 is generated automatically for all new components.
 
-React Styleguidist will use prop-types and defaults automatically also the 
-information from JS Doc comments are used in the style guide.
+React Styleguidist will use **React prop-types** and defaults automatically also the
+information from **JS Doc** comments are used in the style guide.
 
-Have a look to the [React Styleguidist](https://react-styleguidist.js.org/docs/getting-started.html) 
+Have a look to the [React Styleguidist](https://react-styleguidist.js.org/docs/getting-started.html)
 documentation for more information.
 
 
@@ -372,5 +372,5 @@ documentation for more information.
 
 
 ## How to Contribute
-We really appreciate every contribution, so if you have some cool ideas have a look to the 
+We really appreciate every contribution, so if you have some cool ideas have a look to the
 [Contributing Guidelines](https://github.com/emakina-cee-oss/react-cli/blob/master/CONTRIBUTING.md).
