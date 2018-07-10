@@ -12,30 +12,45 @@ class ComponentGenerator extends Generator {
     }
 
     /**
+     * INITIALIZING
+     *
+     * @returns {undefined}
+     */
+    initializing() {
+        const yoConfig = this.config.getAll();
+        this._useTS = (yoConfig && yoConfig.promptValues)
+            ? yoConfig.promptValues.useTS
+            : false;
+    }
+
+    /**
      * WRITING
      *
      * @returns {undefined}
      */
     writing() {
         const pathOptions = this._getPathOptions();
-        this.log(`Spawning ${pathOptions.componentName} Component ...`);
-
+        const subfolder = this._useTS ? 'typescript' : 'javascript';
         const templatesToCopy = [
-            'styles.txt',
-            'styleguide.md',
+            'shared/styles.txt',
         ];
 
-        if (this.options.connect) {
-            templatesToCopy.push('component-connected.txt');
-            templatesToCopy.push('test-connected.txt');
-        } else if (this.options.stateful) {
-            templatesToCopy.push('component-stateful.txt');
-            templatesToCopy.push('test.txt');
-        } else {
-            templatesToCopy.push('component.txt');
-            templatesToCopy.push('test.txt');
+        if (!this._useTS) {
+            templatesToCopy.push('shared/styleguide.md');
         }
 
+        if (this.options.connect) {
+            templatesToCopy.push(`${subfolder}/component-connected.txt`);
+            templatesToCopy.push(`${subfolder}/test-connected.txt`);
+        } else if (this.options.stateful) {
+            templatesToCopy.push(`${subfolder}/component-stateful.txt`);
+            templatesToCopy.push(`${subfolder}/test.txt`);
+        } else {
+            templatesToCopy.push(`${subfolder}/component.txt`);
+            templatesToCopy.push(`${subfolder}/test.txt`);
+        }
+
+        this.log(`Spawning ${pathOptions.componentName} Component ...`);
         this._copyFiles(templatesToCopy, pathOptions);
     }
 
@@ -82,13 +97,14 @@ class ComponentGenerator extends Generator {
      * @private
      */
     _copyFiles(templatesToCopy, pathOptions) {
+        const scriptExtension = this._useTS ? 'tsx' : 'jsx';
         const path = pathOptions.noDefaultFolder
             ? `src/${pathOptions.path}/${pathOptions.componentName}/${pathOptions.componentName}`
             : `src/components/${pathOptions.path}/${pathOptions.componentName}/${pathOptions.componentName}`;
 
         templatesToCopy.forEach((template) => {
-            let fileEnding = 'js';
-            if (template.includes('test')) fileEnding = 'spec.js';
+            let fileEnding = scriptExtension;
+            if (template.includes('test')) fileEnding = `spec.${scriptExtension}`;
             if (template.includes('styles')) fileEnding = 'module.scss';
             if (template.includes('styleguide')) fileEnding = 'md';
 

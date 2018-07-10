@@ -17,8 +17,8 @@ describe('Container', () => {
 
         it('generates all files', () => {
             yoAssert.file([
-                './src/containers/Foo/Foo.js',
-                './src/containers/Foo/Foo.spec.js',
+                './src/containers/Foo/Foo.jsx',
+                './src/containers/Foo/Foo.spec.jsx',
             ]);
         });
 
@@ -28,7 +28,7 @@ describe('Container', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/containers/Foo/Foo.js',
+                    './src/containers/Foo/Foo.jsx',
                     template
                 );
                 done();
@@ -41,7 +41,7 @@ describe('Container', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/containers/Foo/Foo.spec.js',
+                    './src/containers/Foo/Foo.spec.jsx',
                     template
                 );
                 done();
@@ -59,8 +59,8 @@ describe('Container', () => {
 
         it('generates all files', () => {
             yoAssert.file([
-                './src/containers/Foo/Foo.js',
-                './src/containers/Foo/Foo.spec.js',
+                './src/containers/Foo/Foo.jsx',
+                './src/containers/Foo/Foo.spec.jsx',
             ]);
         });
 
@@ -70,7 +70,7 @@ describe('Container', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/containers/Foo/Foo.js',
+                    './src/containers/Foo/Foo.jsx',
                     template
                 );
                 done();
@@ -83,7 +83,7 @@ describe('Container', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/containers/Foo/Foo.spec.js',
+                    './src/containers/Foo/Foo.spec.jsx',
                     template
                 );
                 done();
@@ -101,8 +101,8 @@ describe('Container', () => {
 
         it('generates all files', () => {
             yoAssert.file([
-                './src/containers/Foo/Foo.js',
-                './src/containers/Foo/Foo.spec.js',
+                './src/containers/Foo/Foo.jsx',
+                './src/containers/Foo/Foo.spec.jsx',
             ]);
         });
 
@@ -112,7 +112,7 @@ describe('Container', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/containers/Foo/Foo.js',
+                    './src/containers/Foo/Foo.jsx',
                     template
                 );
                 done();
@@ -125,7 +125,7 @@ describe('Container', () => {
                 if (!template || template === '') done(new Error('Template snapshot does not exist or is empty'));
 
                 yoAssert.fileContent(
-                    './src/containers/Foo/Foo.spec.js',
+                    './src/containers/Foo/Foo.spec.jsx',
                     template
                 );
                 done();
@@ -140,8 +140,8 @@ describe('Container', () => {
             .withArguments(['sub/foo'])
             .then(() => {
                 yoAssert.file([
-                    './src/containers/sub/Foo/Foo.js',
-                    './src/containers/sub/Foo/Foo.spec.js',
+                    './src/containers/sub/Foo/Foo.jsx',
+                    './src/containers/sub/Foo/Foo.spec.jsx',
                 ]);
             });
     });
@@ -152,8 +152,8 @@ describe('Container', () => {
             .withArguments(['./someWhereOverTheRainbow/foo'])
             .then(() => {
                 yoAssert.file([
-                    './src/someWhereOverTheRainbow/Foo/Foo.js',
-                    './src/someWhereOverTheRainbow/Foo/Foo.spec.js',
+                    './src/someWhereOverTheRainbow/Foo/Foo.jsx',
+                    './src/someWhereOverTheRainbow/Foo/Foo.spec.jsx',
                 ]);
             });
     });

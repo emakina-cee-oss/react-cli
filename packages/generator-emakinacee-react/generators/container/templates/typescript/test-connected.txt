@@ -1,0 +1,17 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Container } from '@cerebral/react';
+import controller from '../../controller';
+import <%= name %> from './<%= name %>';
+
+describe('<%= name %>', () => {
+
+    it('renders without error', () => {
+        ReactDOM.render(
+            <Container controller={controller} >
+                <<%= name %> />
+            </Container>,
+            document.createElement('div')
+        );
+    });
+});

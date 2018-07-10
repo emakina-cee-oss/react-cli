@@ -11,6 +11,3 @@ end_of_line = lf
 
 [{*.json,*.yml,*.rb}]
 indent_size = 2
-
-[{*.svg}]
-indent_style = tabs

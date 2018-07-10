@@ -1,0 +1,19 @@
+import React from 'react';
+import { connect } from '@cerebral/react';
+import styles from './<%= name %>.module.scss';
+
+type <%= name %>Props = {
+}
+
+const <%= name %>: React.StatelessComponent<<%= name %>Props> = () => {
+    return (
+        <div className={styles.wrapper}>
+            ...
+        </div>
+    );
+};
+
+export default connect(
+    {},
+    <%= name %>
+);

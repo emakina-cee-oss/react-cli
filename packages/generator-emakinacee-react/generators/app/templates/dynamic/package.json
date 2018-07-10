@@ -2,17 +2,29 @@
   "name": "<%= projectName %>",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "description": "",
   "scripts": {
     "start": "react-app-rewired start",
-    "test": "react-app-rewired test --env=jsdom",
+    "test": "react-app-rewired test --env=jsdom --watchAll",
+    <%- additionalScripts %>
     "build": "react-app-rewired build",
     "serve:help": "serve help",
     "serve:build": "serve ./build --single --open",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
-    "serve:styleguide": "serve ./styleguide",
+    "styleguide": "echo \"The style guide feature is not yet available in the @next version.\" && exit 0",
+    "styleguide:build": "echo \"The style guide feature is not yet available in the @next version.\" && exit 0",
+    "serve:styleguide": "echo \"The style guide feature is not yet available in the @next version.\" && exit 0",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write --tab-width 4 --single-quote --trailing-comma all \"src/**/*.js\""
-  }
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 1 IE versions",
+    "last 2 iOS versions",
+    "last 2 Android versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 Edge versions"
+  ]
 }

@@ -1,0 +1,17 @@
+import React from 'react';
+import styles from './<%= name %>.module.scss';
+
+type <%= name %>Props = {
+}
+
+const <%= name %>: React.StatelessComponent<<%= name %>Props> = () => {
+    return (
+        <div className={styles.wrapper}>
+            ...
+        </div>
+    );
+};
+
+<%= name %>.propTypes = {};
+
+export default <%= name %>;

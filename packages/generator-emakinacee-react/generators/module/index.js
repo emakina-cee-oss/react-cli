@@ -10,6 +10,18 @@ class AppGenerator extends Generator {
     }
 
     /**
+     * INITIALIZING
+     *
+     * @returns {undefined}
+     */
+    initializing() {
+        const yoConfig = this.config.getAll();
+        this._useTS = (yoConfig && yoConfig.promptValues)
+            ? yoConfig.promptValues.useTS
+            : false;
+    }
+
+    /**
      * WRITING
      *
      * @returns {undefined}
@@ -48,9 +60,11 @@ class AppGenerator extends Generator {
      * @private
      */
     _copyFiles() {
+        const scriptExtension = this._useTS ? 'ts' : 'js';
+
         this.fs.copyTpl(
             this.templatePath('module.txt'),
-            this.destinationPath(`src/modules/${this._getNameShort()}/${this._getName()}.js`),
+            this.destinationPath(`src/modules/${this._getNameShort()}/${this._getName()}.${scriptExtension}`),
             {
                 nameUpperCase: changeCase.upperCase(changeCase.sentenceCase(this._getName())),
             }

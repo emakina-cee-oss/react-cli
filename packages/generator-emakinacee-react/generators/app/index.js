@@ -42,9 +42,26 @@ class AppGenerator extends Generator {
             default: this.options.projectName
         });
 
+        prompts.push({
+            type: 'confirm',
+            name: 'useTS',
+            message: 'Add support for typescript',
+            default: false,
+            store: true
+        });
+
+        prompts.push({
+            type: 'confirm',
+            name: 'saveExact',
+            message: 'Save exact npm-versions',
+            default: false
+        });
+
         return this.prompt(prompts).then((answers) => {
             this._appName = answers.appName;
             this._appNameShort = answers.appNameShort;
+            this._useTS = answers.useTS;
+            this._saveExact = answers.saveExact;
         });
     }
 
@@ -56,6 +73,14 @@ class AppGenerator extends Generator {
     configuring() {
         this.log('2. Spawn dot files ...');
         this._copyStaticFiles('dot/static');
+        if (this._useTS) {
+            this._copyStaticFiles('dot/static-ts');
+        } else {
+            this._copyStaticFiles('dot/static-js');
+        }
+        if (this._saveExact) {
+            this._copyStaticFile('dot/optional', '.npmrc');
+        }
         this._copyGitIgnore();
     }
 
@@ -67,12 +92,20 @@ class AppGenerator extends Generator {
     writing() {
         this.log('3. Spawn initial project files ...');
         this._copyStaticFiles('static');
+        let additionalScripts = '';
+        if (this._useTS) {
+            this._copyStaticFiles('static-ts');
+            additionalScripts = '"typecheck": "tsc",';
+        } else {
+            this._copyStaticFiles('static-js');
+        }
 
         this.fs.copyTpl(
             this.templatePath('dynamic/package.json'),
             this.destinationPath('package.json'),
             {
-                projectName: this.options.projectName
+                projectName: this.options.projectName,
+                additionalScripts: additionalScripts
             }
         );
 
@@ -129,12 +162,16 @@ class AppGenerator extends Generator {
             if (err) this.log(err);
 
             files.forEach((file) => {
-                this.fs.copy(
-                    this.templatePath(`${path}/${file}`),
-                    this.destinationPath(file)
-                );
+                this._copyStaticFile(path, file);
             });
         });
+    }
+
+    _copyStaticFile(path, file) {
+        this.fs.copy(
+            this.templatePath(`${path}/${file}`),
+            this.destinationPath(file)
+        );
     }
 
     /**
@@ -160,10 +197,8 @@ class AppGenerator extends Generator {
         const dependencies = [
             'react@16',
             'react-dom@16',
-            'prop-types@15',
             'cerebral@4',
             '@cerebral/react@3',
-            'sass-mq@4',
             'classnames@2'
         ];
 
@@ -177,27 +212,43 @@ class AppGenerator extends Generator {
      * @private
      */
     _devPackagesInstall() {
-        const devDependencies = [
-            'eslint@4',
+        const devDependenciesShared = [
             'eslint-plugin-import@2',
             'eslint-plugin-promise@3',
             'eslint-plugin-standard@3',
             'eslint-plugin-react@7',
             'eslint-plugin-jsx-a11y@6',
-            'eslint-config-emakinacee-base@1',
-            'eslint-config-emakinacee-react@2',
+            'eslint-config-emakinacee-base@2',
+            'eslint-config-emakinacee-react@3',
             'eslint-config-prettier@2',
-            'prettier@1',
-            'react-scripts@1',
-            'react-app-rewired@1',
             'node-sass@4',
-            'sass-loader@6',
-            'serve@6',
-            'react-styleguidist@6',
-            'workbox-webpack-plugin@3',
+            'prettier@1',
+            'react-app-rewired@2',
+            'react-scripts@next',
+            'react-styleguidist@7',
             'react-app-rewire-workbox@2',
+            'sass-mq@4',
+            'serve@6',
+            'workbox-webpack-plugin@3',
         ];
 
+        const devDependenciesJS = [].concat(devDependenciesShared, [
+            'prop-types@15',
+        ]);
+
+        const devDependenciesTS = [].concat(devDependenciesShared, [
+            '@babel/preset-typescript',
+            '@types/react@16',
+            '@types/react-dom@16',
+            '@types/jest@22',
+            'eslint-plugin-typescript@0',
+            'fork-ts-checker-webpack-plugin@0',
+            'react-app-rewire-typescript-babel-preset@2',
+            'react-docgen-typescript', // needed for styleguidist with ts
+            'typescript@2',
+            'typescript-eslint-parser@16'
+        ]);
+        const devDependencies = this._useTS ? devDependenciesTS : devDependenciesJS;
         this.npmInstall(devDependencies, { 'save-dev': true });
     }
 };
