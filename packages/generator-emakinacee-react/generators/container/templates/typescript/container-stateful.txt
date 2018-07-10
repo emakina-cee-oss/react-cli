@@ -1,6 +1,6 @@
 import React from 'react';
 
-type <%= name %>Props = {
+interface <%= name %>Props {
 }
 
 class <%= name %> extends React.Component {
