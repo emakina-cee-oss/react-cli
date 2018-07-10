@@ -6,7 +6,7 @@ Thank you for considering contributing. Your input, ideas and productive critici
 These guidelines should help to communicate and collaborate with each other on this project.
 Following these guidelines helps to save time and to be more productive.
 
-There are many ways to contribute like submitting bug reports or feature requests, 
+There are many ways to contribute like submitting bug reports or feature requests,
 improving documentation or writing tutorials. As already mentions every input is appreciated.
 
 
@@ -14,8 +14,8 @@ improving documentation or writing tutorials. As already mentions every input is
 
 > Issue before PR
 
-To save your own time and prevent frustration start by 
-[creating an issue](https://github.com/emakina-cee-oss/generator-emakinacee-react/blob/master/CONTRIBUTING.md#creating-issues) 
+To save your own time and prevent frustration start by
+[creating an issue](https://github.com/emakina-cee-oss/generator-emakinacee-react/blob/master/CONTRIBUTING.md#creating-issues)
 before submitting a Pull Request. This way others can share their opinions on your input.
 Maybe there won't be a need for a code change or another solution can derive from your thoughts.
 As soon there is a need for code change, go for it and create a pull request!
@@ -45,12 +45,12 @@ Prefix commit messages with a package description it belongs to like follows:
 
 
 ## Dev / Test Setup
-To work on the react-cli you should clone/fork the repo 
+To work on the react-cli you should clone/fork the repo
 and checkout the desired branch (well, hello captain obvious).
 
 In addition to that you also have to link the npm dependencies correctly.
 
-1. Navigate to `./packages/generator-emakinacee-react`
+1. Navigate to `./packages/generator-emakinacee-react` inside this cli project
 2. Run `npm link`
 3. Navigate back to the projects root folder
 4. Run `npm link generator-emakinacee-react`
