@@ -5,7 +5,10 @@ import styles from './<%= name %>.module.scss';
 interface <%= name %>Props {
 }
 
-const <%= name %>: React.StatelessComponent<<%= name %>Props> = () => {
+interface <%= name %>CerebralProps {
+}
+
+const <%= name %>: React.StatelessComponent<<%= name %>CerebralProps & <%= name %>Props> = () => {
     return (
         <div className={styles.wrapper}>
             ...
@@ -13,7 +16,7 @@ const <%= name %>: React.StatelessComponent<<%= name %>Props> = () => {
     );
 };
 
-export default connect(
+export default connect<<%= name %>CerebralProps, <%= name %>Props>(
     {},
     <%= name %>
 );
